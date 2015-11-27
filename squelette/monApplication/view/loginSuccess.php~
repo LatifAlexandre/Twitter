@@ -1,0 +1,33 @@
+
+<form id="formulaire-inscription" method="post" action="monApplication.php?action=login" enctype="multipart/form-data">
+	<label for="nom">Last name&nbsp;</label> : <input type="text" name="nom" id="nom" />
+	<label for="prenom">First name</label> : <input type="text" name="prenom" id="prenom" />
+	<label for="login">Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> : <input type="text" name="login" id="login" />
+	<label for="password">Password</label> : <input type="password" name="password" id="password" />
+	<input type="file" name="avatar" id="avatar"/>
+	<input type="submit" value="Submit" />
+</form>
+
+<?php 
+
+//on regarde si l'utilisateur existe avec la fonction getUserByLoginAndPass()
+
+if (isset($_REQUEST['login']))
+	$login = $_REQUEST['login'];
+if (isset($_REQUEST['password']))
+	$password = $_REQUEST['password'];
+
+//si il n'existe pas
+if (!utilisateurTable::getUserByLoginAndPass($login, $password))
+{
+	echo "Nom d'utilisateur ou mot de passe incorect wesh\n";
+}
+else //si il existe
+{
+	context::setSessionAttribute("nom", 	$_REQUEST['nom']);
+	context::setSessionAttribute("prenom", 	$_REQUEST['prenom']);
+	context::setSessionAttribute("login", 	$_REQUEST['login']);
+	context::setSessionAttribute("password",$_REQUEST['password']);
+}
+
+?>
