@@ -60,14 +60,13 @@ header #menu a
 {
 	color: rgb(247, 253, 186);
 	text-decoration: none;
-	
 }
 
 header #menu a:hover
 {
 	color: white;	
 	text-decoration: none;
-	
+	text-shadow: 0px 0px 7px silver;	
 }
 
 
@@ -171,13 +170,28 @@ th
 
 #profile-bloc #profile-picture
 {
-		     border: 1px solid #F00;
+     border: 1px solid #F00;
      width: 150px;
      height: 150px;
      border-radius: 15px;
-     box-shadow: 0px 0px 5px black;
-	
+     box-shadow: 0px 0px 5px silver;
+     transition: width 2s, height 2s, transform 3s, box-shadow 1s;
+     	
 }
+
+#profile-bloc #profile-picture:hover
+{
+
+
+        box-shadow: 0px 0px 10px black;
+/*
+        width: 400px;
+        height: 400px;
+        transform: rotate(1440deg);
+        box-shadow: 0px 0px 40px red;
+        */
+}
+
 #profile-bloc #compte-info
 {
 	font-weight: bold;
@@ -210,8 +224,53 @@ th
 }
 /*                 -------- FIN PROFILE ------ */
 	
+
+/* 		             ---------- TWEET -----------*/
+
+.box-tweet
+{
+	box-shadow: 0px 0px 5px black;
+	background-color: white;
+	text-align: left;
+	padding: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  float: left;
+  width: 700px;
+	margin-top:20px;
 }
 
+.profile-picture-tweet
+{
+	width: 80x;
+	height: 80px;
+	display: inline-block;
+	
+	box-shadow: 0px 0px 3px black;
+	border-radius: 5px;
+}
+
+.identifiant-tweet
+{
+	display: inline-block;
+	font-size: 20px;
+	margin: 0px 10px;
+	
+}
+
+.form-tweet
+{
+	width: 500px;
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+	border-top: 1px solid green;
+}
+.form-tweet button
+{
+	margin-left: 15px;
+}
 
 /* ---------- FIN SECTION CENTRALE ---------- */
 

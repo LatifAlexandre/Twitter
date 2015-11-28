@@ -44,6 +44,7 @@ class mainController
 	
 	public static function personalProfile($request, $context)
 	{
+	        $_SESSION['nom'] = "Alfred";
 		$context->profilePicture = "http://i2.wp.com/coloradoocean.org/wp-content/uploads/2014/08/MW13Speaker_Fabien_Cousteau1.jpg?resize=250%2C285";
 		$context->firstName = "Alfred";
 		$context->lastName = "Coco";
@@ -52,6 +53,19 @@ class mainController
 		
 		
 		return context::SUCCESS;
+	}
+	
+	
+	public static function tweet($request,$context)
+	{
+		$context->profilePicture = "http://i2.wp.com/coloradoocean.org/wp-content/uploads/2014/08/MW13Speaker_Fabien_Cousteau1.jpg?resize=250%2C285";
+		$context->identifiant = "identifiantLong";
+		$context->tweet = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacinia";
+		$context->vote = 27;
+		$context->partage = 42;
+		
+		return context::SUCCESS;
+
 	}
 
 

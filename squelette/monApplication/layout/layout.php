@@ -1,3 +1,9 @@
+<?php 
+
+$_SESSION['login'] = "cici";
+?>
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
   <head>
@@ -16,8 +22,8 @@
 			<a href="../HTML/index.php"><p id="logo">TWITTER</p></a>
 			<div id="menu">
 			     <a href=""> Home </a> &middot;
-			     <a href=""> <?php echo $context->firstName; ?> </a> &middot;
-			     <a href=""> Users </a> &middot;
+			     <a href="monApplication.php?action=personalProfile"> <?php echo $_SESSION['nom']; ?> </a> &middot;
+			     <a href="../PUBLIC/users.php"> Users </a> &middot;
 			     <a href=""> About </a>
 			
 			
