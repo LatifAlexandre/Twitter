@@ -3,8 +3,8 @@ Les bons tutos de Maximes
 
 pour télécharger le redipository quand on a rien
 -------------------------------------------------
-	* on va dans le dossier ou l'on veut le placer
-	* `git clone` (inserer le lien ssh/https que l'on trouve a droite sur la page du redpisp)
+	- on va dans le dossier ou l'on veut le placer
+	- `git clone` (inserer le lien ssh/https que l'on trouve a droite sur la page du redpisp)
 	
 pour mettre a jour (avant de travailler et necessaire pour faire un git push)
 -----------------------------------------------------------------------------
