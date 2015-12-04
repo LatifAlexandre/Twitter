@@ -1,35 +1,49 @@
 <?php
 
-abstract class basemodel
+class basemodel
 {
 
- public function save()
-  {
-    $connection = new dbconnection() ;
+	public function __construct($array = "pas de parametre")
+	{
+		print_r($array);
+	/*
+		if ($array == "pas de parametre")
+		{
+			//on construit un element vide
+		}
+		else
+		{
+			print_r
+		}*/
+	}
 
-    if($this->id)
-    {
-      $sql = "update ".get_class($this)." set " ;
+	public function save()
+	{
+	    $connection = new dbconnection() ;
 
-      $set = array() ;
-      foreach($this->data as $att => $value)
-        if($att != 'id' && $value)
-          $set[] = "$att = '".$value."'" ;
+	    if($this->id)
+	    {
+	      $sql = "update ".get_class($this)." set " ;
 
-      $sql .= implode(",",$set) ;
-      $sql .= " where id=".$this->id ;
-    }
-    else
-    {
-      $sql = "insert into ".get_class($this)." " ;
-      $sql .= "(".implode(",",array_keys($this->data)).") " ;
-      $sql .= "values ('".implode("','",array_values($this->data))."')" ;
-    }
+	      $set = array() ;
+	      foreach($this->data as $att => $value)
+		if($att != 'id' && $value)
+		  $set[] = "$att = '".$value."'" ;
 
-    $connection->doExec($sql) ;
-    $id = $connection->getLastInsertId("jabaianb.".get_class($this)) ;
+	      $sql .= implode(",",$set) ;
+	      $sql .= " where id=".$this->id ;
+	    }
+	    else
+	    {
+	      $sql = "insert into ".get_class($this)." " ;
+	      $sql .= "(".implode(",",array_keys($this->data)).") " ;
+	      $sql .= "values ('".implode("','",array_values($this->data))."')" ;
+	    }
 
-    return $id == false ? NULL : $id ; 
-  }
+	    $connection->doExec($sql) ;
+	    $id = $connection->getLastInsertId("jabaianb.".get_class($this)) ;
+
+	    return $id == false ? NULL : $id ; 
+	}
 
 }
