@@ -51,7 +51,9 @@ $_SESSION['login'] = "cici";
          );
          
 	$truc = new Tweet($a);
-	//$truc.getEmetteur();
+	//$res = (string)$truc->getEmetteur();
+	
+	echo $res;
 	
 	echo "<p>///////////////////</p>";
 	?>

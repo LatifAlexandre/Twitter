@@ -3,13 +3,14 @@
 class basemodel
 {
 
-	 private $data;
+	private $data;
 
 	public function __construct($array = "pas de parametre")
 	{
+
 		foreach ( $array as $key => &$value )
 		{
-			__set($key, $value);
+			$this->__set($key, $value);
 		}
 		
 		print_r($data);
@@ -43,6 +44,7 @@ class basemodel
 
 	    return $id == false ? NULL : $id ; 
 	}
+	
 	public function __get($att)
 	{
 		return $data->$att;
@@ -55,3 +57,7 @@ class basemodel
 	}
 
 }
+
+
+
+?>

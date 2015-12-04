@@ -4,28 +4,67 @@ class Tweet extends basemodel
 {
      public function getId ()
      {
-     	return $data->id;
+          $connection = new dbconnection() ;
+          $sql = "select id from jabaianb.tweet;";
+
+          $res = $connection->doQuery( $sql );
+
+          if($res === false)
+               return false ;
+
+          return $res ;
      }
      
-     public function getEmetteur ()
+     public function getEmetteur ($id)
      {
-     	echo "$data->emetteur";
-     	return $data->emetteur;
+     	$connection = new dbconnection() ;
+          $sql = "select emetteur from jabaianb.tweet;";
+
+          $res = $connection->doQueryObject( $sql );
+
+          if($res === false)
+               return false ;
+
+          return $res ;
      }
 
      public function getPost ()
      {
-     	return $data->post;
+     	$connection = new dbconnection() ;
+          $sql = "select post from jabaianb.tweet;";
+
+          $res = $connection->doQuery( $sql );
+
+          if($res === false)
+               return false ;
+
+          return $res ;
      }
      
      public function getParent ()
      {
-	return $data->parent;
+	     $connection = new dbconnection() ;
+          $sql = "select parent from jabaianb.tweet;";
+
+          $res = $connection->doQuery( $sql );
+
+          if($res === false)
+               return false ;
+
+          return $res ;
      }
      
      public function getLikes ()
      {
-	return $data->nbvotes;
+	     $connection = new dbconnection() ;
+          $sql = "select nbvotes from jabaianb.tweet;";
+
+          $res = $connection->doQuery( $sql );
+
+          if($res === false)
+               return false ;
+
+          return $res ;
      }
 
 }
