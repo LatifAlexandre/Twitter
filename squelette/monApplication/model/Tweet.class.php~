@@ -9,6 +9,7 @@ class Tweet extends basemodel
      
      public function getEmetteur ()
      {
+     	echo "$data->emetteur";
      	return $data->emetteur;
      }
 

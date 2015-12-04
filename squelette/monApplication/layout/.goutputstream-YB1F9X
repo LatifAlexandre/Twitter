@@ -42,16 +42,13 @@ $_SESSION['login'] = "cici";
 	
 	echo "<p>///////////////////</p>";
 	
-	$a = array( 
-	    'id' => '1',
-            'emetteur' => 'sweet',
-            'parent' => 'round',
-            'post'  => 'apple',
-            'nbvotes'  => '2',
+	$a = array( 'color' => 'red',
+            'taste' => 'sweet',
+            'shape' => 'round',
+            'name'  => 'apple',
          );
          
-	$truc = new Tweet($a);
-	//$truc.getEmetteur();
+	$truc = new basemodel($a);
 	
 	echo "<p>///////////////////</p>";
 	?>
