@@ -17,7 +17,7 @@
 		<section id="section-centrale">
 			<?php
 			
-			$connexion = new PDO('pgsql:host=localhost;dbname=etd', 'uapv1404039', 'Mc2wxJ'); //MOT DE PASSE 03obK8 QQj2lP Mc2wxJ
+			$connexion = new PDO('pgsql:host=localhost;dbname=etd', 'uapv1404039', 'y1wfc8'); //MOT DE PASSE 03obK8 QQj2lP y1wfc8
 			
 			//traitement suppression
 			if ( isset($_GET['option']) )
@@ -37,13 +37,10 @@
 				
 				        $nom = $_POST["M_nom"];
 				        $prenom = $_POST["M_prenom"];
-				        $avatar = $_POST["M_avatar"];
-				        $login = $_POST["login"];
-				        $password = $_POST["password"];
-
+                            $login = $_POST['M_login'];
    
 				                //UPDATE liste_proprietaire SET adresse="3, rue des tulipes", age="65" WHERE nom="Benoît";
-				                $resultat = $connexion->query("UPDATE jabaianb.utilisateur SET nom='$nom', prenom='$prenom', avatar='$avatar', identifiant='$login', pass='$password' WHERE id='".$_GET['userID']."'");
+				                $resultat = $connexion->query("UPDATE jabaianb.utilisateur SET nom='$nom', prenom='$prenom', identifiant='$login' WHERE id='".$_GET['userID']."'");
 			                   	//$resultat->closeCursor();
                                         
 			        }
@@ -57,7 +54,7 @@
 			$resultat->setFetchMode(PDO::FETCH_ASSOC);
 			
 			echo "<table>";
-			echo "<tr> <th>Id</th>  <th>Last Name</th>  <th>First Name</th>  <th>Avatar</th>  <th>Login</th> <th>Password</th> </tr>";
+			echo "<tr> <th>Id</th>  <th>Last Name</th>  <th>First Name</th>  <th>Login</th>  <th>Avatar</th> <th>Password</th> <th></th> <th></th> </tr>";
 			while($ligne = $resultat->fetch())
 			{
 			   //si il faut affihcer le formulaire de modif
@@ -66,27 +63,14 @@
 			           if ($_GET['option'] == 'm' && $_GET['userID'] == $ligne['id'])
 			           {
 			           
-                                   /*$pre_first = "SELECT prenom FROM personnes WHERE id =".$_GET[userID].";";
-                                   $pre_first = pg_query("SELECT prenom FROM personnes WHERE id =".$_GET[userID].";");
-			           $pre_first = pg_fetch_result($pre_first, 0);
-			           
-			           $pre_first = "SELECT prenom FROM personnes WHERE id =".$_GET[userID].";";
-			           $pre_first = pg_query($pre_first);
-			           
-			           $pre_last = "SELECT nom FROM personnes WHERE id =".$_GET[userID].";";
-			           $pre_last = pg_query($pre_last);
-			           
-			           placeholder=".$pre_last."
-			           
-			           */
 			           
 			           
 			              	echo "<form id='form-modif-user' method='POST' action='users.php?option=m-bis&userID=".$ligne['id']."'>";
-			             	   echo "<td> $ligne[id] </td>";
+			             	 echo "<td> $ligne[id] </td>";
 				           echo "<td> <input type='text' name='M_nom' id='M_nom' placeholder=".$ligne['nom']." /> </td>";
 				           echo "<td> <input type='text' name='M_prenom' id='M_prenom' placeholder=".$ligne['prenom']." /> </td>";
-				           echo "<td><a href='../user_avatars/$avatar'> Image</a> </td>"; //lien vers l'image
-				           echo "<td> ".$ligne['identifiant']." </td>";
+				           echo "<td> <input type='text' name='M_login' id='M_login' placeholder=".$ligne['identifiant']." /> </td>";
+				           echo "<td><a href='../user_avatars/$ligne[avatar]'> Image</a> </td>"; //lien vers l'image
 				           echo "<td> ****** </td>";
 				           echo "<td class='bouton-option'> <input type='submit' value='VALIDER' /> </td>";
 				           echo "<td> <a href='users.php'> ANNULER </a> </td>";
@@ -100,11 +84,10 @@
 				   echo "<td><a href='view_profile.php?userID=".$ligne['id']."'>".$ligne['id']."</td></a>";
 				   echo "<td> $ligne[nom] </td>";
 				   echo "<td> $ligne[prenom] </td>";
-				   if ( isset($_REQUEST['avatar']) )
-				   {
-				         echo "<td><a href='../user_avatars/$avatar'> Image</a> </td>"; //lien vers l'image
-			           }
 				   echo "<td> $ligne[identifiant] </td>";
+				   echo "<td><a href='../user_avatars/$ligne[avatar]'> Image</a> </td>"; //lien vers l'image
+
+				   
 				   echo "<td> ****** </td>";
 				   //options
 				   echo "<td> <a href='users.php?option=m&userID=".$ligne['id']."'> MODIFIER </a> </td>";
