@@ -2,18 +2,19 @@
 
 class basemodel
 {
-
 	private $data;
 
-	public function __construct($array = "pas de parametre")
+	public function __construct($array = NULL)
 	{
-
-		foreach ( $array as $key => &$value )
-		{
-			$this->__set($key, $value);
-		}
 		
-		print_r($data);
+		if ($array != NULL)
+		{
+			foreach ( $array as $key => $value )
+			{
+				$this->data[$key] = $value;
+			}
+		}
+
 	}
 
 	public function save()
@@ -45,19 +46,25 @@ class basemodel
 	    return $id == false ? NULL : $id ; 
 	}
 	
-	public function __get($att)
-	{
-		return $data->$att;
-	}
 	
-	
-	public function __set($att, $value)
+	//accesseurs et mutateurs magiques
+	public function __get($prop)
 	{
-		$data->$att = $value;
+			return $this->data[$prop];
 	}
 
+	public function __set($prop,$value) 
+	{
+		$this->data[$prop]=$value;      
+	}
+	
+	public function aff()
+	{
+		echo "<pre> Il y a " . count($this->data) . " éléments dans ce tableau...\n";
+		if (count($this->data) > 0)
+		{
+			print_r($this->data);
+		}
+		echo "</pre>";
+	}
 }
-
-
-
-?>

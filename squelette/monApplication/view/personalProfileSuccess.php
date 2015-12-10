@@ -40,7 +40,7 @@
   <?php
      /* ici on va accèder à la base de donner et afficher les logos des utilisateurs comme liste d'utilisateurs */
      
-               $connexion = new PDO('pgsql:host=localhost;dbname=etd', 'uapv1404039', 'Mc2wxJ');
+               $connexion = new PDO('pgsql:host=localhost;dbname=etd', 'uapv1404039', 'y1wfc8');
 			$resultat = $connexion->query("SELECT * FROM jabaianb.utilisateur ORDER BY id;");
 			$resultat->setFetchMode(PDO::FETCH_ASSOC);
 			
@@ -49,28 +49,6 @@
 			{
 			     echo "<li>$ligne[identifiant]</li>";
 			}
-			/*  <ul id="user-list">
-	               <li><a>user 1</a></li>
-	               <li><a>user 2</a></li>
-	               <li><a>user 3</a></li>
-	               <li><a>user 4</a></li>
-	               <li><a>user 1</a></li>
-	               <li><a>user 2</a></li>
-	               <li><a>user 3</a></li>
-	               <li><a>user 4</a></li>
-	               <li><a>user 1</a></li>
-	               <li><a>user 2</a></li>
-	               <li><a>user 3</a></li>
-	               <li><a>user 4</a></li>
-	               <li><a>user 1</a></li>
-	               <li><a>user 2</a></li>
-	               <li><a>user 3</a></li>
-	               <li><a>user 4</a></li>
-	               <li><a>user 1</a></li>
-	               <li><a>user 2</a></li>
-	               <li><a>user 3</a></li>
-	               <li><a>user 4</a></li>
-	            */
 	            
 	            echo "</ul>";
    ?>

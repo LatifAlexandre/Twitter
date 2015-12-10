@@ -2,6 +2,18 @@
 
 class Tweet extends basemodel
 {
+
+/*
+par convention, nous nommons les attributs de tweet ainsi : 
+	id
+	transmitter (emetteur dans la bdd)
+	parent
+	post
+	nbVotes
+
+
+/* Alex, pas besoin d'acceder a la bdd depuis la fonction tweet, c'est la classe tweetTable qui construit un tweet depuis la bdd
+
      public function getId ()
      {
           $connection = new dbconnection() ;
@@ -15,7 +27,7 @@ class Tweet extends basemodel
           return $res ;
      }
      
-     public function getEmetteur ($id)
+     public function getEmetteur ()
      {
      	$connection = new dbconnection() ;
           $sql = "select emetteur from jabaianb.tweet;";
@@ -66,7 +78,5 @@ class Tweet extends basemodel
 
           return $res ;
      }
-
+*/
 }
-
-?>

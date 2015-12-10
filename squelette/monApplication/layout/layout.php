@@ -24,10 +24,8 @@ $_SESSION['login'] = "cici";
 			     <a href=""> Home </a> &middot;
 			     <a href="monApplication.php?action=personalProfile"> <?php echo $_SESSION['nom']; ?> </a> &middot;
 			     <a href="../PUBLIC/users.php"> Users </a> &middot;
-			     <a href=""> About </a>
+			     <a href="../PUBLIC/searchEngine.php"> Search </a>
 			
-			
-			</div>
 			<!-- <a href="../HTML/users.php">Users list</a> -->
 		</div>
 	</header>
@@ -37,26 +35,26 @@ $_SESSION['login'] = "cici";
 	    
 	<?php include($template_view); ?>
 	
+	<p>///////////////////</p>
 	<?php
 	/* TEST */
 	
-	echo "<p>///////////////////</p>";
-	
+	/*
 	$a = array( 
-	    'id' => '1',
-            'emetteur' => 'sweet',
-            'parent' => 'round',
-            'post'  => 'apple',
-            'nbvotes'  => '2',
+	    'id' => 1,
+            'login' => 'donald',
          );
-         
-	$truc = new Tweet($a);
-	//$res = (string)$truc->getEmetteur();
+    */
+    
 	
-	echo $res;
+    $tab = postTable::getPostById(18);
+    
+    var_dump($tab);
+   
 	
-	echo "<p>///////////////////</p>";
 	?>
+	
+	<p>///////////////////</p>
 	    	 
 	</section>
 	

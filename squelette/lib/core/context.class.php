@@ -65,7 +65,7 @@ class context
     
 	
 	
-	public function __get($prop)
+    public function __get($prop)
     {
         return $this->data[$prop];      
     }
