@@ -1,7 +1,22 @@
 <?php
 
-class Tweet extends basemodel
+class tweet extends basemodel
 {
+
+/*
+par convention, nous nommons les attributs de tweet ainsi : 
+	id
+	transmitter (emetteur dans la bdd)
+	parent
+	post
+	nbVotes
+	
+	Nous accédons a ces attributs avec la methode hérité de baseMode __get()
+	exemple : __get('id') -> retourne l'id
+
+
+/* Alex, pas besoin d'acceder a la bdd depuis la fonction tweet, c'est la classe tweetTable qui construit un tweet depuis la bdd
+
      public function getId ()
      {
           $connection = new dbconnection() ;
@@ -66,7 +81,5 @@ class Tweet extends basemodel
 
           return $res ;
      }
-
+*/
 }
-
-?>

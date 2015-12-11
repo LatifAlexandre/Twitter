@@ -53,7 +53,7 @@
 				//BASE DE DONNE
 				
 				//connexion
-				$connexion = new PDO('pgsql:host=localhost;dbname=etd', 'uapv1402561', 'lwKZvQ'); //MOT DE PASSE 03obK8 QQj2lP
+				$connexion = new PDO('pgsql:host=localhost;dbname=etd', 'uapv1404039', 'Mc2wxJ'); //MOT DE PASSE 03obK8 QQj2lP
 				
 				if ($connexion == false)
 				{

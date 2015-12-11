@@ -19,7 +19,6 @@ class mainController
 		{
 			return context::ERROR;
 		}
-
 	}
 
     	public static function superTest($request, $context)
