@@ -2,6 +2,35 @@
 
 class tweet extends basemodel
 {
+	public function getPost()
+	{
+		$idPost = $this->post;
+		$post =postTable::getPostById($idPost);
+		
+		return $post;
+		
+		
+	}
+	
+	public function getParent()
+	{
+		$idParent = $this->parent;
+		$parent = utilisateurTable::getUserById($idParent);
+		
+		return $parent;
+	}
+	
+	public function getLikes()
+	{
+		/*il y a deux maniere de faire : une simple et une compliqué
+			la simple : on utilise simplement l'attribut 'nbVotes' et on l'affiche
+				l'inconvénient : si l'on incrémente simplement nbVotes a chaque fois que qq clique sur le bouton du tweet, un meme utilisateur pourra liker plusieurs fois le meme tweet
+			la compliqué : on compte le nombre de likes dans la table 'jabianb.vote'
+				l'avantage : lors du traitement d'un like, on peux aller cherche dans la bdd, sur la table vote, si l'utilisateur a deja liker et ainsi bloquer ses likes supplémentaire. (et eventuelment lui permettre de déliker)
+		*/
+		
+		return $this->nbvotes;	
+	}
 
 /*
 par convention, nous nommons les attributs de tweet ainsi : 
