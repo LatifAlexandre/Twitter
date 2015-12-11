@@ -37,19 +37,12 @@ $_SESSION['login'] = "cici";
 	
 	<p>///////////////////</p>
 	<?php
-	/* TEST */
+
+	$tab = tweetTable::getTweetsPostedBy(359);
 	
-	/*
-	$a = array( 
-	    'id' => 1,
-            'login' => 'donald',
-         );
-    */
-    
-	
-    $tab = postTable::getPostById(18);
-    
-    var_dump($tab);
+	echo "<pre>";
+	var_dump($tab);
+	echo "</pre>";
    
 	
 	?>

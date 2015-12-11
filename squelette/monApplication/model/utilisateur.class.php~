@@ -6,7 +6,7 @@
 */
 
 
-class Utilisateur extends basemodel
+class utilisateur extends basemodel
 {
 	/*
 	par conventions les variables d'un utilisateur sont nommé ainsi :

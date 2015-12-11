@@ -16,6 +16,8 @@ class postTable extends basemodel
 		if($res === false)
 			return false ;
 
-		return $res;
+		$post = new post($res[0]);
+		
+		return $post;
 	}
 }

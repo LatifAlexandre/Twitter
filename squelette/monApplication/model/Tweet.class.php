@@ -1,6 +1,6 @@
 <?php
 
-class Tweet extends basemodel
+class tweet extends basemodel
 {
 
 /*

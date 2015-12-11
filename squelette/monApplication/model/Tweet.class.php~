@@ -10,6 +10,9 @@ par convention, nous nommons les attributs de tweet ainsi :
 	parent
 	post
 	nbVotes
+	
+	Nous accédons a ces attributs avec la methode hérité de baseMode __get()
+	exemple : __get('id') -> retourne l'id
 
 
 /* Alex, pas besoin d'acceder a la bdd depuis la fonction tweet, c'est la classe tweetTable qui construit un tweet depuis la bdd

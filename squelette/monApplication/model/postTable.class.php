@@ -4,7 +4,7 @@
   id |             texte              |            date            |       image     
   */
 
-class postTable extends basemodel
+class postTable
 {
 	public static function getPostById($id)
 	{
