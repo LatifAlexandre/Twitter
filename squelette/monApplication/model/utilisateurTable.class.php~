@@ -41,11 +41,13 @@ class utilisateurTable
   	$connection = new dbconnection() ;
     
     $sql = "select * from jabaianb.utilisateur" ;
-    $res = $connection->doQuery( $sql );
+    $res = $connection->doQueryObject( $sql, 'utilisateur' );
 
     if($res === false)
       return false ;
-    
+      
+    return $res;
+    /*
     //on créé un tableau de personnes
     $tabUser = array();
     
@@ -57,8 +59,39 @@ class utilisateurTable
     }
     
     //on retourne notre tableau
-    return $tabUser
+    return $tabUser;
+    */
   }
+  
+  
+  
+  public static function deleteUser( $id )
+  {
+    $connection = new dbconnection() ;
+    
+    $sql = "DELETE FROM jabaianb.utilisateur WHERE id = $id" ;
+    $res = $connection->doQuery( $sql );
+
+    if($res === false)
+      return false ;
+      
+      return true;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 

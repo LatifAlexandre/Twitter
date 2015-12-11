@@ -66,6 +66,14 @@ class mainController
 		return context::SUCCESS;
 
 	}
+	
+	
+	
+	public static function users ($request,$context)
+	{
+	     $context->users = utilisateurTable::getUsers();
+	     return context::SUCCESS;
+	}
 
 
 }

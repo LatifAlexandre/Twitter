@@ -41,11 +41,13 @@ class utilisateurTable
   	$connection = new dbconnection() ;
     
     $sql = "select * from jabaianb.utilisateur" ;
-    $res = $connection->doQuery( $sql );
+    $res = $connection->doQueryObject( $sql, 'utilisateur' );
 
     if($res === false)
       return false ;
-    
+      
+    return $res;
+    /*
     //on créé un tableau de personnes
     $tabUser = array();
     
@@ -58,7 +60,20 @@ class utilisateurTable
     
     //on retourne notre tableau
     return $tabUser;
+    */
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 

@@ -35,10 +35,9 @@ $_SESSION['login'] = "cici";
 	    
 	<?php include($template_view); ?>
 	
-	<p>///////////////////</p>
 	<?php
 	
-	echo "<p> TEST 2</p>";
+	/*echo "<p> TEST 2</p>";
 
 	$tab = tweetTable::getTweetsPostedBy(359);
 	$tweet = $tab[0];
@@ -56,11 +55,10 @@ $_SESSION['login'] = "cici";
 	echo "<h3> le nb de like du tweet </h3>";
 	var_dump($tweet->getLikes());
 	echo "</pre>";
-   
+   */
 	
 	?>
-	
-	<p>///////////////////</p>
+
 	    	 
 	</section>
 	
