@@ -1,15 +1,16 @@
 
 <form id="formulaire-inscription" method="post" action="monApplication.php?action=login" enctype="multipart/form-data">
-	<label for="nom">Last name&nbsp;</label> : <input type="text" name="nom" id="nom" />
-	<label for="prenom">First name</label> : <input type="text" name="prenom" id="prenom" />
-	<label for="login">Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> : <input type="text" name="login" id="login" />
-	<label for="password">Password</label> : <input type="password" name="password" id="password" />
-	<input type="file" name="avatar" id="avatar"/>
+	<label for="nom">Last name&nbsp;</label> : <input type="text" name="nom" id="nom" /><br>
+	<label for="prenom">First name</label> : <input type="text" name="prenom" id="prenom" /><br>
+	<label for="login">Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> : <input type="text" name="login" id="login" /><br>
+	<label for="password">Password</label> : <input type="password" name="password" id="password" /><br>
+	<input type="file" name="avatar" id="avatar"/><br>
 	<input type="submit" value="Submit" />
 </form>
 
-<?php 
 
+<?php 
+/*
 //on regarde si l'utilisateur existe avec la fonction getUserByLoginAndPass()
 
 if (isset($_REQUEST['login']))
@@ -29,5 +30,6 @@ else //si il existe
 	context::setSessionAttribute("login", 	$_REQUEST['login']);
 	context::setSessionAttribute("password",$_REQUEST['password']);
 }
-
+*/
 ?>
+

@@ -8,8 +8,6 @@ class tweet extends basemodel
 		$post =postTable::getPostById($idPost);
 		
 		return $post;
-		
-		
 	}
 	
 	public function getParent()

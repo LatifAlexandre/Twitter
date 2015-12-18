@@ -20,10 +20,12 @@ class basemodel
 	public function save()
 	{
 	    $connection = new dbconnection() ;
-
+		
+	
+		
 	    if($this->id)
 	    {
-	      $sql = "update ".get_class($this)." set " ;
+	      $sql = "update jabaianb.".get_class($this)." set " ;
 
 	      $set = array() ;
 	      foreach($this->data as $att => $value)

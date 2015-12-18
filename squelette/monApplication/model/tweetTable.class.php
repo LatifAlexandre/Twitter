@@ -37,7 +37,7 @@ class tweetTable
 		
 		$sql = "select * from jabaianb.tweet where emetteur=$id" ;
 		$res = $connection->doQuery( $sql );
-		
+
 		//on créé un tableau de tweets
 		$tabTweet = array();
 		

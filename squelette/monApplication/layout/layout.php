@@ -32,32 +32,27 @@ $_SESSION['login'] = "cici";
 	
 	
 	<section id="section-centrale">
-	    
+   	
+   	<?php
+   	
+   	$value = array(
+   					'id' => '213',
+   					'identifiant' => 'waldo',
+   					'pass' => 'azerty',
+   					'nom' => 'brugvin',
+   					'prenom' => 'charlie',
+   					'statut' => 'voici mon satut',
+   					'avatar' => 'testAvatar',	
+   					);
+   
+   					
+   	var_dump($_SESSION);
+   	
+   	?>
+   	
+   	
 	<?php include($template_view); ?>
 	
-	<?php
-	
-	/*echo "<p> TEST 2</p>";
-
-	$tab = tweetTable::getTweetsPostedBy(359);
-	$tweet = $tab[0];
-	
-	echo "<pre>";
-	echo "<h3> le tweet </h3>";
-	var_dump($tweet);
-	
-	echo "<h3> le post du tweet </h3>";
-	var_dump($tweet->getPost());
-	
-	echo "<h3> le parent du tweet </h3>";
-	var_dump($tweet->getParent());
-	
-	echo "<h3> le nb de like du tweet </h3>";
-	var_dump($tweet->getLikes());
-	echo "</pre>";
-   */
-	
-	?>
 
 	    	 
 	</section>
