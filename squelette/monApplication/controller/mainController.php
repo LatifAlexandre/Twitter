@@ -1,6 +1,7 @@
 <?php
 /*
- * Controler 
+ * INSERT into jabaianb.utilisateur(identifiant, pass, nom, prenom, avatar) VALUES('alfi', 'azerty', 'coco', 'alfred', 'NULL');
+
  */
  
  
@@ -31,16 +32,16 @@ class mainController
 
 	public static function index($request,$context)
 	{
-		
+		$context->tweets = tweetTable::getTweets();
 		return context::SUCCESS;
 	}
 
 	public static function inscription($request, $context)
 	{
-	    $_SESSION['open'] = "true";
 		return context::SUCCESS;
 	}
 	
+
 	public static function inscriptionTraitement()
 	{
 		
@@ -76,17 +77,13 @@ class mainController
 		}
 		
 		/*VU QU'ON NE PEUX PAS PENCORE SAVE DS LA BDD*/
-		//on ouvre une session pour le debug
 		
-		foreach($values as $att => $value)
-		{
-			context::setSessionAttribute($att, 	$value);
-		}
 		
 		//on créé un objet de type user
 		$user = new utilisateur($values);
 		
-		//on l'ajoute avec save
+		//on ouvre une session pour le debug
+		context::setSessionAttribute('user', 	$user);
 		
 		
 		/*NE FONCTIONE PAS POUR LE MOMENT */
@@ -95,21 +92,55 @@ class mainController
 		return context::SUCCESS;
 	}
 	
-	public static function personalProfile($request, $context)
+	public static function connexion()
 	{
-	        //$_SESSION['nom'] = "Alfred";
+	        return context::SUCCESS;
+	}
+	
+	
+	public static function connexionTraitement($request, $context)
+	{
+	        $identifiant = $_REQUEST['identifiant'];
+	        $pass = $_REQUEST['pass'];
 	        
-	        /*
-		$context->profilePicture = "http://i2.wp.com/coloradoocean.org/wp-content/uploads/2014/08/MW13Speaker_Fabien_Cousteau1.jpg?resize=250%2C285";
-		$context->firstName = "Alfred";
-		$context->lastName = "Coco";
-		$context->identifiant = "cici";
-		$context->statut = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacinia cursus. Nam venenatis ipsum a tortor tincidunt, eget tempus augue posuere. In hac habitasse platea dictumst. Suspendisse eros metus, sodales eget tortor vel, eleifend rhoncus orci. ";
-		*/
-		
-		
+	        $user = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
+	        
+	        //on ouvre la session
+	        context::setSessionAttribute('user', 	$user);
+	        
+	        return context::SUCCESS;    
+	}
+	
+	public static function deconnexion()
+	{
+	        session_destroy();
+	        $url = 'monApplication.php';
+	        header("Refresh:4; url=$url");
+	        return context::SUCCESS;
+	        
+	        //header(Refresh:4; url=);
+	        
+	}
+	
+	public static function userProfile($request, $context)
+	{
+
 		//nous n'avons aucune variables a transferer car elles sont dans la session
 		
+		//si il n'y a pas d'ID, on charge le profile en session
+	        if (!isset($_GET['userID']))
+	        {
+	                $context->user = $_SESSION['user'];
+	                $context->tweets = tweetTable::getTweetsPostedBy($_SESSION['user']->id);
+	        }
+	        //si il y a un id en GET
+	        else
+	        {
+		        $context->user = utilisateurTable::getUserById($_GET['userID']);
+	                $context->tweets = tweetTable::getTweetsPostedBy($_GET['userID']);
+	        }
+	        
+	        
 		
 		return context::SUCCESS;
 	}
@@ -119,7 +150,8 @@ class mainController
 	{
 		//"http://i2.wp.com/coloradoocean.org/wp-content/uploads/2014/08/MW13Speaker_Fabien_Cousteau1.jpg?resize=250%2C285"
 		
-		if (!isset($_GET['userId']))
+		var_dump($request);
+		if (!isset($_GET['userID']))
 		{
 			//on affiche tout les tweets de la BDD
 			$context->tweets = tweetTable::getTweets();
@@ -127,7 +159,7 @@ class mainController
 		else
 		{
 			//on affiche les tweets de l'id donné
-			$context->tweets = tweetTable::getTweetsPostedBy($_GET['userId']);
+			$context->tweets = tweetTable::getTweetsPostedBy($_GET['userID']);
 		}
 			
 		return context::SUCCESS;
@@ -143,13 +175,14 @@ class mainController
 	     if ( isset($_GET['option'])){
 	          if ($_GET['option'] == 'm-bis'){
 	               utilisateurTable::updateUser($_GET['userID'], $_POST["M_nom"], $_POST["M_prenom"], $_POST['M_login']);
-                    header("Refresh:0; url=monApplication.php?action=users");
+                       header("Location: monApplication.php?action=users");
+                       
 	          }
           
 	     
 	     else if ($_GET['option'] == 's'){
 	          utilisateurTable::deleteUserById($_GET['userID']);
-	          header("Refresh:0; url=monApplication.php?action=users");
+	          header("Location: monApplication.php?action=users");
 	     }
 	     }
 	     else{

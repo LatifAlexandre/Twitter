@@ -12,6 +12,13 @@ class tweetTable
 	
 		
 		$sql = "select * from jabaianb.tweet" ;
+                $res = $connection->doQueryObject( $sql, 'tweet' );
+
+                    if($res === false)
+                      return false ;
+                      
+                    return $res;
+		/*
 		$res = $connection->doQuery( $sql );
 		
 
@@ -28,7 +35,7 @@ class tweetTable
 		
 		
 		//on retourne notre tableau
-		return $tabTweet ;
+		return $tabTweet ;*/
 	}
 	
 	public static function getTweetsPostedBy($id)
@@ -36,7 +43,13 @@ class tweetTable
 		$connection = new dbconnection() ;
 		
 		$sql = "select * from jabaianb.tweet where emetteur=$id" ;
-		$res = $connection->doQuery( $sql );
+		$res = $connection->doQueryObject( $sql, 'tweet' );
+
+                    if($res === false)
+                      return false ;
+                      
+                    return $res;
+		/*$res = $connection->doQuery( $sql );
 
 		//on créé un tableau de tweets
 		$tabTweet = array();
@@ -49,6 +62,6 @@ class tweetTable
 		}
 		
 		//on retourne notre tableau
-		return $tabTweet ;
+		return $tabTweet ;*/
 	}
 }

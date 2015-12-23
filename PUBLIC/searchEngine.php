@@ -18,7 +18,7 @@
 		     <form id="search_form" method="post" action="searchEngine.php?option=search" enctype="multipart/form-data">
 			     <h1>Our Search Engine</h1>
                     <p> Search users using their first name, last name or user name : </p>
-				<label for="searchEntry">Last name&nbsp;</label> : <input type="text" name="searchEntry" id="searchEntry" />
+				<label for="searchEntry">search&nbsp;</label> : <input type="text" name="searchEntry" id="searchEntry" />
 				<input type="submit" value="Search" />
 			</form>
 			<?php

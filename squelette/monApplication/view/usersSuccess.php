@@ -44,10 +44,7 @@
           
 	}
      
-     
-     
-     /*var_dump($context->users);
-     die();*/
+        echo "</table>";
 
 
 

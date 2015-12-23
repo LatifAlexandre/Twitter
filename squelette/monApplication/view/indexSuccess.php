@@ -1,1 +1,2 @@
-C'est l'action par défaut ! 
+
+<?php include('tweetSuccess.php'); ?>

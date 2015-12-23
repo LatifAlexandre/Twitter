@@ -6,14 +6,19 @@ class basemodel
 
 	public function __construct($array = NULL)
 	{
-		
-		if ($array != NULL)
+	        if ($array == NULL)
+	        {
+	                $this->data['identifiant'] = 'inexistant';
+	                $this->data['id'] = 'nul';
+	        }
+		else
 		{
 			foreach ( $array as $key => $value )
 			{
 				$this->data[$key] = $value;
 			}
 		}
+		
 
 	}
 
@@ -47,6 +52,7 @@ class basemodel
 
 	    return $id == false ? NULL : $id ; 
 	}
+
 	
 	
 	//accesseurs et mutateurs magiques
@@ -69,4 +75,8 @@ class basemodel
 		}
 		echo "</pre>";
 	}
+	
+	
+	
+	
 }

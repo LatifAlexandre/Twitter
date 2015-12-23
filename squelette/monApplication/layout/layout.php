@@ -1,7 +1,4 @@
-<?php 
 
-$_SESSION['login'] = "cici";
-?>
 
 
 <!DOCTYPE html>
@@ -17,36 +14,63 @@ $_SESSION['login'] = "cici";
   </head>
 
   <body>
+        
   	<header>
 		<div id="en-tete-centre">
-			<a href="../HTML/index.php"><p id="logo">TWITTER</p></a>
+			
+			<a href="monApplication.php"> <p id="logo">TWITTER</p> </a>
+			
 			<div id="menu">
-			     <a href=""> Home </a> &middot;
-			     <a href="monApplication.php?action=personalProfile"> <?php echo $_SESSION['nom']; ?> </a> &middot;
-			     <a href="../PUBLIC/users.php"> Users </a> &middot;
+			   
+			     <?php
+			     //seulement si la session est ouverte
+			     if (isset($_SESSION['user']))
+			     {
+			        echo "<span>bonjour ".$_SESSION['user']->prenom." ".$_SESSION['user']->nom.  " !</span>";
+			        //personal profile
+			        echo "<a href='monApplication.php?action=personalProfile'> Profile </a> &middot;";
+			        //deconnexion
+		                echo "<a href='monApplication.php?action=deconnexion'> Déconnexion </a> &middot;";
+			        
+			     }
+			     else
+			     {
+			        //lien vers connexion / inscription
+			         echo "<a href='monApplication.php?action=connexion'> Connexion </a>&middot;";
+			         echo "<a href='monApplication.php?action=inscription'> Inscription </a>&middot;";
+			     }
+			     ?>
+			     
+			     <a href="monApplication.php?action=users"> Users </a> &middot;
 			     <a href="../PUBLIC/searchEngine.php"> Search </a>
+			</div>
 			
 			<!-- <a href="../HTML/users.php">Users list</a> -->
 		</div>
 	</header>
 	
 	
+	
 	<section id="section-centrale">
    	
    	<?php
    	
+   	
+   	
    	$value = array(
+   	                                       /*
    					'id' => '213',
    					'identifiant' => 'waldo',
    					'pass' => 'azerty',
    					'nom' => 'brugvin',
    					'prenom' => 'charlie',
    					'statut' => 'voici mon satut',
-   					'avatar' => 'testAvatar',	
+   					'avatar' => 'testAvatar',	*/
    					);
    
    					
-   	var_dump($_SESSION);
+   	var_dump(utilisateurTable::getUserById(666));
+   	
    	
    	?>
    	

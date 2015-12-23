@@ -13,8 +13,11 @@ class utilisateurTable
       return false ;
 	
     //nous allons construire l'utilisateur a partir des donné recuillis
-  	$user = new utilisateur($res[0]);
-  	//puis on le retourne
+  	if (isset($res[0]))
+  	        $user = new utilisateur($res[0]);
+  	else
+  	        $user = new utilisateur(NULL);
+  	
   	return $user;
   }
 
@@ -29,7 +32,11 @@ class utilisateurTable
   	$res = $connection->doQuery( $sql );
   	
   	//nous allons construire l'utilisateur a partir des donné recuillis
-  	$user = new utilisateur($res[0]);
+  	
+  	if (isset($res[0]))
+  	        $user = new utilisateur($res[0]);
+  	else
+  	        $user = new utilisateur(NULL);
   	
   	return $user;
   	
@@ -40,7 +47,7 @@ class utilisateurTable
   
   	$connection = new dbconnection() ;
     
-    $sql = "select * from jabaianb.utilisateur" ;
+    $sql = "select * from jabaianb.utilisateur ORDER BY id" ;
     $res = $connection->doQueryObject( $sql, 'utilisateur' );
 
     if($res === false)
