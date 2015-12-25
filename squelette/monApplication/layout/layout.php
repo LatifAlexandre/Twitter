@@ -18,32 +18,41 @@
   	<header>
 		<div id="en-tete-centre">
 			
-			<a href="monApplication.php"> <p id="logo">TWITTER</p> </a>
+			<a href="monApplication.php" class=>
+				<img src="css/logo.png" alt="logo du site">
+			</a>
 			
-			<div id="menu">
-			   
+			   <ul id='liste-liens'>
+			     	<li><a href="monApplication.php?action=users"> users </a></li>
+			     	<li><a href="../PUBLIC/searchEngine.php"> search </a></li>
+			     </ul>
+
 			     <?php
 			     //seulement si la session est ouverte
 			     if (isset($_SESSION['user']))
 			     {
-			        echo "<span>bonjour ".$_SESSION['user']->prenom." ".$_SESSION['user']->nom.  " !</span>";
+			     	echo "<p>bonjour ".$_SESSION['user']->prenom." ".$_SESSION['user']->nom.  " !</p>";
+			     	echo "<ul id='liste-profile'>";
+			        
 			        //personal profile
-			        echo "<a href='monApplication.php?action=personalProfile'> Profile </a> &middot;";
+			        echo "<li><a href='monApplication.php?action=personalProfile'> profile </a> </li>";
 			        //deconnexion
-		                echo "<a href='monApplication.php?action=deconnexion'> Déconnexion </a> &middot;";
+		            echo "<li> <a href='monApplication.php?action=deconnexion'> deconnexion </a> </li>";
+		            echo "</ul>";
+
 			        
 			     }
 			     else
 			     {
 			        //lien vers connexion / inscription
-			         echo "<a href='monApplication.php?action=connexion'> Connexion </a>&middot;";
-			         echo "<a href='monApplication.php?action=inscription'> Inscription </a>&middot;";
+			        echo "<ul id='liste-profile'>";
+			         echo "<li> <a href='monApplication.php?action=connexion'> connexion </a> </li>";
+			         echo "<li> <a href='monApplication.php?action=inscription'> inscription </a> </li>";
+			         echo "</ul>";
 			     }
 			     ?>
 			     
-			     <a href="monApplication.php?action=users"> Users </a> &middot;
-			     <a href="../PUBLIC/searchEngine.php"> Search </a>
-			</div>
+			     
 			
 			<!-- <a href="../HTML/users.php">Users list</a> -->
 		</div>
@@ -69,7 +78,7 @@
    					);
    
    					
-   	var_dump(utilisateurTable::getUserById(666));
+   	//var_dump(utilisateurTable::getUserById(666));
    	
    	
    	?>

@@ -150,7 +150,7 @@ class mainController
 	{
 		//"http://i2.wp.com/coloradoocean.org/wp-content/uploads/2014/08/MW13Speaker_Fabien_Cousteau1.jpg?resize=250%2C285"
 		
-		var_dump($request);
+		//var_dump($request);
 		if (!isset($_GET['userID']))
 		{
 			//on affiche tout les tweets de la BDD
