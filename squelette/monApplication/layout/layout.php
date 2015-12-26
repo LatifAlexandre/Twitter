@@ -23,21 +23,21 @@
 			</a>
 			
 			   <ul id='liste-liens'>
-			     	<li><a href="monApplication.php?action=users"> users </a></li>
-			     	<li><a href="../PUBLIC/searchEngine.php"> search </a></li>
+			     	<li><a href="monApplication.php?action=users"> Users </a></li>
+			     	<li><a href="../PUBLIC/searchEngine.php"> Search </a></li>
 			     </ul>
 
 			     <?php
 			     //seulement si la session est ouverte
-			     if (isset($_SESSION['user']))
+			     if (isset($_SESSION['user']) && ($_SESSION['user']->nom != null) && ($_SESSION['user']->prenom != null))
 			     {
-			     	echo "<p>bonjour ".$_SESSION['user']->prenom." ".$_SESSION['user']->nom.  " !</p>";
+			     	echo "<p>Good Morning ".$_SESSION['user']->prenom." ".$_SESSION['user']->nom.  " !</p>";
 			     	echo "<ul id='liste-profile'>";
 			        
 			        //personal profile
-			        echo "<li><a href='monApplication.php?action=personalProfile'> profile </a> </li>";
+			        echo "<li><a href='monApplication.php?action=personalProfile'> Profile </a> </li>";
 			        //deconnexion
-		            echo "<li> <a href='monApplication.php?action=deconnexion'> deconnexion </a> </li>";
+		            echo "<li> <a href='monApplication.php?action=deconnexion'> Logout </a> </li>";
 		            echo "</ul>";
 
 			        
@@ -46,8 +46,8 @@
 			     {
 			        //lien vers connexion / inscription
 			        echo "<ul id='liste-profile'>";
-			         echo "<li> <a href='monApplication.php?action=connexion'> connexion </a> </li>";
-			         echo "<li> <a href='monApplication.php?action=inscription'> inscription </a> </li>";
+			         echo "<li> <a href='monApplication.php?action=connexion'> Log in </a> </li>";
+			         echo "<li> <a href='monApplication.php?action=inscription'> Sign in </a> </li>";
 			         echo "</ul>";
 			     }
 			     ?>

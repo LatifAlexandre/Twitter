@@ -181,6 +181,18 @@ footer p
 	margin: 20px 0px;
 }
 
+#formulaire-connexion-tab
+{
+        border-collapse:collapse;
+        text-align:center;
+}
+
+#formulaire-connexion-tab td
+{
+        border:none;
+        outline:none;
+}
+
 #formulaire-inscription label
 {
 	width: 120px;
