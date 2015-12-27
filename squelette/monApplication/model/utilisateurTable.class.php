@@ -71,6 +71,21 @@ class utilisateurTable
   }
   
   
+  public static function searchUsers($search)
+  {
+  
+        $connection = new dbconnection() ;
+
+        $sql = "SELECT * FROM jabaianb.utilisateur WHERE nom='".$search."' OR prenom='".$search."' OR identifiant='".$search."';";
+        $res = $connection->doQueryObject( $sql, 'utilisateur' );
+
+        if($res === false)
+        return false ;
+
+        return $res;
+  }
+  
+  
   
    public static function deleteUserById($id)
    {

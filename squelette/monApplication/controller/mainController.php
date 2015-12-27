@@ -192,7 +192,30 @@ class mainController
 	     
 	     
 	}
+	
+	
+	public static function search ($request,$context)
+	{
+	     
+	     return context::SUCCESS;
+        }
 
+
+        public static function searchQuery ($request,$context)
+	{
+                if ( preg_match ( "/[A-Z  | a-z]+/", $_POST['searchEntry'] ))
+                {
+                
+                        $search = $_POST['searchEntry'];
+                        $context->searchResult = utilisateurTable::searchUsers($search);
+                        if (count($context->searchResult) == 0)
+                                return context::ERROR;
+                        else 
+                                return context::SUCCESS;
+                }
+                    
+                return context::ERROR;
+        }
 
 
 }

@@ -24,7 +24,7 @@
 			
 			   <ul id='liste-liens'>
 			     	<li><a href="monApplication.php?action=users"> Users </a></li>
-			     	<li><a href="../PUBLIC/searchEngine.php"> Search </a></li>
+			     	<li><a href="monApplication.php?action=search"> Search </a></li>
 			     </ul>
 
 			     <?php
