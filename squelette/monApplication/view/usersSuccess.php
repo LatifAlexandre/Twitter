@@ -29,7 +29,7 @@
           {
 
                echo "<tr>";
-               echo "<td><a href=monApplication/view/view_profile.php?userID=$id</td> $id</a>";
+               echo "<td> <a href=monApplication.php?action=userProfile&userID=$id> $id </a> </td> ";
                echo "<td> $nom </td>";
                echo "<td> $prenom </td>";
                echo "<td> $identifiant </td>";

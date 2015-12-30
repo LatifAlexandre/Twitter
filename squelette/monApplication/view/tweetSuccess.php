@@ -14,7 +14,7 @@
 <div class="box-tweet">
 
 	<img class="profile-picture-tweet" 
-	src=" http://i2.wp.com/coloradoocean.org/wp-content/uploads/2014/08/MW13Speaker_Fabien_Cousteau1.jpg?resize=250%2C285 <?php // echo $tweet->getParent()->avatar; ?>" 
+	src=" <?php echo $tweet->getParent()->avatar; ?>"
 	alt=" <?php echo $tweet->getParent()->avatar; ?>" 
 	>
 	

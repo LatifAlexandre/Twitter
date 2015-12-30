@@ -158,12 +158,13 @@ footer p
 	overflow: auto;
 }
 
-#section-centrale div
+#section-centrale .bloc-principal
 {
 	box-shadow: 0px 0px 5px silver;
 	background-color: rgba(255,255,255,0.2);
 	padding: 10px;
   border-radius: 5px;
+	margin: 20px 0px;
 }
 
 #message-erreur
@@ -208,7 +209,7 @@ table
 {
 	border-collapse: collapse;
 	margin: auto;
-	width: 800px;
+	width: 100%;
 }
 td
 {
@@ -242,56 +243,47 @@ th
 
 /*	           ----------PROFILE-------- */
 
-#profile-bloc
-{
-	border: 1px solid #000;
-     border-radius: 10px;
-     padding: 20px;
-     display: inline-block;
-     float: left;
-     width: 700px;
-}
 
 #profile-bloc #profile-picture
 {
-     border: 1px solid #F00;
-     width: 150px;
-     height: 150px;
-     border-radius: 15px;
-     box-shadow: 0px 0px 5px silver;
-     transition: width 2s, height 2s, transform 3s, box-shadow 1s;
-     	
+	display: block;
+	margin: 10px auto;
+	border: 1px solid black;
+	width: 150px;
+	height: 150px;
 }
 
-#profile-bloc #profile-picture:hover
+#profile-bloc #bloc-info-user
 {
-
-
-        box-shadow: 0px 0px 10px black;
-/*
-        width: 400px;
-        height: 400px;
-        transform: rotate(1440deg);
-        box-shadow: 0px 0px 40px red;
-        */
+	width: 150px;
+	margin: auto;
+	text-align: left;
 }
 
-#profile-bloc #compte-info
+#profile-bloc #bloc-info-user .info-user
 {
 	font-weight: bold;
-	font-style: italic;
 }
-#profile-bloc #tweet
-{
-	width: 300px;
-     height: 75px;
-     color: #99ccff;
-}
+
 
 #profile-bloc #statut
 {
-
+	border-top : 1px solid black;
+	border-bottom : 1px solid black;
+	width: 50%;
+	margin: 40px auto;
+	padding: 20px;
+	
 }
+
+#bloc-redaction-tweet textarea
+{
+	width: 80%;
+	height: 100px;
+	
+}
+
+
 
 
 

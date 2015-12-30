@@ -1,4 +1,4 @@
-<div>
+<div class='bloc-principal'>
 	<!-- le formulaire de connexion -->
         <table id="formulaire-connexion-tab" rows=3 column=2 border="0">
 	<form id="formulaire-connexion" method="post" action="monApplication.php?action=connexionTraitement" enctype="multipart/form-data">

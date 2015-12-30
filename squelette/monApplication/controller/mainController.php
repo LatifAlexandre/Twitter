@@ -1,7 +1,6 @@
 <?php
 /*
- * INSERT into jabaianb.utilisateur(identifiant, pass, nom, prenom, avatar) VALUES('alfi', 'azerty', 'coco', 'alfred', 'NULL');
-
+insert into jabaianb.post (texte) values ('qgsfdgfdg')
  */
  
  
@@ -45,28 +44,13 @@ class mainController
 	public static function inscriptionTraitement()
 	{
 		
-		/*
+		
 		$values = array(
-							'id' => 1000,
 							'identifiant' => $_REQUEST['identifiant'], 
-							'pass' => $_REQUEST['pass'], 
+							'pass' => sha1($_REQUEST['pass']), 
 							'nom' => $_REQUEST['nom'], 
 							'prenom' => $_REQUEST['prenom']);
-		*/
-		
-	   	$value = array(
-				'id' => '213',
-				'identifiant' => 'waldo',
-				'pass' => 'azerty',
-				'nom' => 'brugvin',
-				'prenom' => 'charlie',
-				'statut' => 'voici mon satut',
-				'avatar' => 'testAvatar',	
-				);
-			
-   	
-							
-		
+
 		if (isset($_REQUEST['avatar']))
 		{
 			$values['avatar'] = $_REQUEST['avatar'];
@@ -76,18 +60,10 @@ class mainController
 			$values['avatar']  = 'NONE';
 		}
 		
-		/*VU QU'ON NE PEUX PAS PENCORE SAVE DS LA BDD*/
-		
-		
 		//on créé un objet de type user
 		$user = new utilisateur($values);
 		
-		//on ouvre une session pour le debug
-		context::setSessionAttribute('user', 	$user);
-		
-		
-		/*NE FONCTIONE PAS POUR LE MOMENT */
-		//$user->save();
+		$user->save();
 		
 		return context::SUCCESS;
 	}
@@ -144,6 +120,42 @@ class mainController
 		
 		return context::SUCCESS;
 	}
+
+	public static function redactionTweetTraitement($request,$context)
+	{
+
+		//on créé un objet tweet depuis $_POST et $_SESSION
+		
+		$post = new post(
+			array(
+			'texte' => $request['tweet'],
+			'date' => date('Y-m-d H:i:s'),
+				)
+						);
+
+		//on poste le post et on recupere son id
+
+		$idPost = $post->save();
+
+		
+		//on créé le tweet a partir des données de sessions et de l'id du post
+		$tweet = new tweet(
+			array(
+			'emetteur' => $_SESSION['user']->id,
+			'parent' => $_SESSION['user']->id,
+			'post' => $idPost,
+			'nbVotes' => 0,
+				)
+						);	
+		$tweet->save();
+		
+
+		
+
+		//on le save sur la bdd
+		return context::SUCCESS;
+	}
+	
 	
 	
 	public static function tweet($request,$context)
@@ -196,7 +208,8 @@ class mainController
 	
 	public static function search ($request,$context)
 	{
-	     
+	     $context->users = utilisateurTable::getUsers();
+
 	     return context::SUCCESS;
         }
 
@@ -216,6 +229,13 @@ class mainController
                     
                 return context::ERROR;
         }
+
+    public static function listUsers ($request,$context)
+    {
+    	$context->users = utilisateurTable::getUsers();
+
+    	return context::SUCCESS;
+    }
 
 
 }

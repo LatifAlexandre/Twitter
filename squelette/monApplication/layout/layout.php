@@ -35,7 +35,7 @@
 			     	echo "<ul id='liste-profile'>";
 			        
 			        //personal profile
-			        echo "<li><a href='monApplication.php?action=personalProfile'> Profile </a> </li>";
+			        echo "<li><a href='monApplication.php?action=userProfile'> Profile </a> </li>";
 			        //deconnexion
 		            echo "<li> <a href='monApplication.php?action=deconnexion'> Logout </a> </li>";
 		            echo "</ul>";
@@ -63,8 +63,6 @@
 	<section id="section-centrale">
    	
    	<?php
-   	
-   	
    	
    	$value = array(
    	                                       /*

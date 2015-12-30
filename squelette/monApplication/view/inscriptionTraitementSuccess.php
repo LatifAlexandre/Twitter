@@ -1,1 +1,5 @@
-Le traitement c'est fait !
+<?php
+
+header("Location:monApplication.php");
+
+?>

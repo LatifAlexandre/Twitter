@@ -6,12 +6,7 @@ class basemodel
 
 	public function __construct($array = NULL)
 	{
-	        if ($array == NULL)
-	        {
-	                $this->data['identifiant'] = 'inexistant';
-	                $this->data['id'] = 'nul';
-	        }
-		else
+	    if ($array != NULL)
 		{
 			foreach ( $array as $key => $value )
 			{
@@ -39,18 +34,33 @@ class basemodel
 
 	      $sql .= implode(",",$set) ;
 	      $sql .= " where id=".$this->id ;
+
+
 	    }
 	    else
 	    {
-	      $sql = "insert into ".get_class($this)." " ;
+	      $sql = "insert into jabaianb.".get_class($this)." " ;
 	      $sql .= "(".implode(",",array_keys($this->data)).") " ;
 	      $sql .= "values ('".implode("','",array_values($this->data))."')" ;
 	    }
 
+	    //echo "<p style='color:red;'> $sql </p>";
 	    $connection->doExec($sql) ;
 	    $id = $connection->getLastInsertId("jabaianb.".get_class($this)) ;
 
 	    return $id == false ? NULL : $id ; 
+	}
+
+
+	//Cette fonction ajoute simplement un element sur la bdd,
+	//ne gere pas la modification
+	public function saveBis()
+	{
+		$sql = "insert into ".get_class($this)." " ;
+	    $sql .= "(".implode(",",array_keys($this->data)).") " ;
+	    $sql .= "values ('".implode("','",array_values($this->data))."')" ;
+
+	    echo "<p> $sql </p>";
 	}
 
 	
