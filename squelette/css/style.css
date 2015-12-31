@@ -350,17 +350,30 @@ th
 	margin: 25px 40px;
 }
 
-.form-tweet
+.tweet-actions
 {
 	width: 500px;
 	margin: auto;
-	padding: 10px;
+	padding: 15px;
 	text-align: center;
 	border-top: 1px solid green;
+	
 }
-.form-tweet button
+.tweet-actions a
 {
-	margin-left: 15px;
+	background-color: rgba(129,206,53,0.3);
+	margin: 15px 15px;
+	padding: 5px;
+	border-radius: 3px;
+	
+	text-decoration: none;
+	font-weight: bold;
+	color: white;
+}
+.tweet-actions a:hover
+{
+	background-color: rgba(129,206,53,1);
+
 }
 
 /* ---------- FIN SECTION CENTRALE ---------- */

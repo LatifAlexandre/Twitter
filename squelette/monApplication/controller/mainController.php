@@ -237,6 +237,33 @@ class mainController
     	return context::SUCCESS;
     }
 
+    public static function tweetLike($request,$context)
+    {
+    	//on ouvre le tweet qu'on liké
+    	$tweet = tweetTable::getTweetById($request['tweetID']);
+    	var_dump($tweet);
+
+    	$tweet->nbvotes++;
+
+    	$tweet->save();
+
+    	return context::SUCCESS;
+    }
+
+        public static function tweetShare($request,$context)
+    {
+    	//on construit le tweet partagé
+    	$tweet = tweetTable::getTweetById($request['tweetID']);
+    	
+    	//on modifie son emetteur
+    	$tweet->emetteur = $_SESSION['user']->id;
+
+    	//on le save
+    	$tweet->save();
+
+    	return context::SUCCESS;
+    }
+
 
 }
 

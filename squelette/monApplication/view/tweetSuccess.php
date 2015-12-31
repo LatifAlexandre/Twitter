@@ -13,15 +13,17 @@
 	
 <div class="box-tweet">
 
-	<img class="profile-picture-tweet" 
-	src=" <?php echo $tweet->getParent()->avatar; ?>"
-	alt=" <?php echo $tweet->getParent()->avatar; ?>" 
-	>
-	
-	<div class="infoUser">
-		<p class="identifiant-tweet"> <?php echo $tweet->getParent()->identifiant; ?></p>
-		<p class="id-tweet"> id : <?php echo $tweet->id ?></p>
-	</div>
+	<a href='monApplication.php?action=userProfile&userID=<?php echo $tweet->getParent()->id ?> '>
+		<img class="profile-picture-tweet" 
+		src=" <?php echo $tweet->getParent()->avatar; ?>"
+		alt=" <?php echo $tweet->getParent()->avatar; ?>" 
+		>
+		
+		<div class="infoUser">
+			<p class="identifiant-tweet"> <?php echo $tweet->getParent()->identifiant; ?></p>
+			<p class="id-tweet"> id : <?php echo $tweet->id; ?></p>
+		</div>
+	</a>
 	
 	<p class="message-tweet">
 
@@ -31,10 +33,18 @@
 	
 
 
-		<form class="form-tweet">
-			<button type="button">Share</button>
-			<button type="button">Vote</button> <?php echo $tweet->nbvotes; ?>
-		</form>
+		<div class='tweet-actions'>
+			
+			<a href="monApplication.php?action=tweetShare&tweetID=<?php echo $tweet->id; ?> ">
+				Share
+			</a>
+
+			<a href="monApplication.php?action=tweetLike&tweetID=<?php echo $tweet->id; ?> "> 
+				Vote 
+			</a> 
+
+			<?php echo $tweet->nbvotes; ?>
+		</div>
 
 		
 	</div>

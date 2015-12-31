@@ -30,6 +30,12 @@
 
 
 </div>
+
+<!-- on affiche le form de redaction d'un tweet seulement si il y a
+        une session ouverte et que l'utilisateur est sur sa page -->
+<?php if (isset($_SESSION['user']) && $_SESSION['user']->id == $id)
+{
+?>
 <div id='bloc-redaction-tweet' class='bloc-principal'>
          <!-- formulaire de rédaction d'un tweet -->
         <form method="post" action="monApplication.php?action=redactionTweetTraitement">
@@ -38,8 +44,8 @@
                 <input type="submit" value="Tweet it" />
         </form>
 </div>
-
 <?php
+}
 
 include('tweetSuccess.php');
 
