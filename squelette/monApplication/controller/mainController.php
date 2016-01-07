@@ -125,7 +125,7 @@ class mainController
 	{
 
 		//on créé un objet tweet depuis $_POST et $_SESSION
-		
+
 		$post = new post(
 			array(
 			'texte' => $request['tweet'],
@@ -148,9 +148,6 @@ class mainController
 				)
 						);	
 		$tweet->save();
-		
-
-		
 
 		//on le save sur la bdd
 		return context::SUCCESS;
@@ -183,6 +180,16 @@ class mainController
 	public static function users ($request,$context)
 	{
 	     $context->users = utilisateurTable::getUsers();
+
+	     //on regarde si c'est un admin
+	     if (isset($_SESSION['user']) && $_SESSION['user']->pass == sha1('god'))
+	     {
+	     	$context->admin = true;
+	     }
+	     else
+	     {
+	     	$context->admin = false;
+	     }
 	     
 	     if ( isset($_GET['option'])){
 	          if ($_GET['option'] == 'm-bis'){

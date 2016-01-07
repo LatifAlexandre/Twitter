@@ -17,8 +17,8 @@
         
   	<header>
 		<div id="en-tete-centre">
-
-			<a href="monApplication.php?action=index">
+			
+			<a href="monApplication.php" class=>
 				<img src="css/logo.png" alt="logo du site">
 			</a>
 			
@@ -61,60 +61,32 @@
 	
 	
 	<section id="section-centrale">
-	</section>
    	
-	<script src="jquery-1.9.1.min.js"> </script>
+	<?php //include($template_view); ?>
+		 
+	</section>
 
-	<script>
-	$(document).ready(function(){
-	  
-	  // LES LIENS
+	<button id="button"> Clique </button>
+	
+	
+	<div id="divTest" style="border: 1px solid black; width: 300px; height: 300px;">
 
-	  $(document).delegate('a', 'click', function(e){
-	  	e.preventDefault(); //on desactive la redirection
-	  	var href= $(this).attr('href'); //on recupere le lien complet du a cliqué
-	  	var varGet = href.split('?')[1]; // on recupere la partie après le '?', soit les variables get
-
-	    $("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
-	  });
-
-	   // LES SUBMIT DES FORMULAIRES
-
-	  $(document).delegate('input:submit', 'click', function(e){
-	  	e.preventDefault();
-
-	  	alert('okkkkkkkkkkkkk');
-	  	var action= $('form').attr('action'); //on recupere le lien complet du a cliqué
-	  	var varGet = action.split('?')[1]; 
-
-	  	//on charge la page
-		$("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
-
-		$.fn.form = function() {
-		    var formData = {};
-		    this.find('[name]').each(function() {
-		        formData[this.name] = this.value;  
-		    })
-		    return formData;
-		};
-
-		// use like
-		var data = $('#formulaire-inscription').form();
-
-	    alert('bonjour : ' data);
-
-	  	$.post('monAjax.php?'.concat(varGet), { nom: 'brubru', prenom: 'chacha', identifiant: 'walwal', pass: 'azerty', file: 'NONE'},
-   		function(data) {
-     	alert(data);
-   		});
-	  });
-
-	});
-	</script>
+	</div>
 	
 	<footer>
 		<p> Charlie Brugvin & Alexandre Latif - Web Project S5 CERI 2015 </p>
 	</footer>
+	    
+   	<script src="jquery-1.9.1.min.js"> </script>
+
+	<script>
+	$(document).ready(function(){
+	  $("#button").click(function(){
+	    $("#divTest").text("Hello world!");
+	  });
+
+	});
+	</script>*/
     
   </body>
 

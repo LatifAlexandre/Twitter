@@ -1,9 +1,11 @@
 <?php
      
-     
-     
      echo "<table>";
-		     echo "<tr> <th>Id</th>  <th>Last Name</th>  <th>First Name</th>  <th>Login</th>  <th>Avatar</th> <th>Password</th> <th></th> <th></th> </tr>";
+		     echo "<tr> <th>Id</th>  <th>Last Name</th>  <th>First Name</th>  <th>Login</th>  <th>Avatar</th>";
+               if ($context->admin == true)
+               {
+                    echo "<th>Password</th> <th></th> <th></th> </tr>";
+               }
      
      foreach ($context->users as $key )
      {
@@ -33,12 +35,17 @@
                echo "<td> $nom </td>";
                echo "<td> $prenom </td>";
                echo "<td> $identifiant </td>";
-               echo "<td><a href=../user_avatars/$avatar> Image</a> </td>"; //lien vers l'image
+               echo "<td><a href=$avatar> Image</a> </td>"; //lien vers l'image
 
-               echo "<td> ****** </td>";
+              
                //options
-               echo "<td> <a href=monApplication.php?action=users&option=m&userID=$id> MODIFIER </a> </td>";
-               echo "<td> <a href=monApplication.php?action=users&option=s&userID=$id> SUPPRIMER </a> </td>";
+               if ($context->admin == true)
+               {
+                    echo "<td> ****** </td>";
+                    echo "<td> <a href=monApplication.php?action=users&option=m&userID=$id> MODIFIER </a> </td>";
+                    echo "<td> <a href=monApplication.php?action=users&option=s&userID=$id> SUPPRIMER </a> </td>";
+ 
+               }
                echo "</tr>";
           }
           

@@ -11,7 +11,7 @@ class tweetTable
 		$connection = new dbconnection() ;
 	
 		
-		$sql = "select * from jabaianb.tweet" ;
+		$sql = "select * from jabaianb.tweet order by nbvotes desc" ;
                 $res = $connection->doQueryObject( $sql, 'tweet' );
 
                     if($res === false)
@@ -42,7 +42,7 @@ class tweetTable
 	{
 		$connection = new dbconnection() ;
 		
-		$sql = "select * from jabaianb.tweet where emetteur=$id" ;
+		$sql = "select * from jabaianb.tweet where emetteur=$id order by nbvotes desc" ;
 		$res = $connection->doQueryObject( $sql, 'tweet' );
 
                     if($res === false)
