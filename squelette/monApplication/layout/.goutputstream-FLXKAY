@@ -68,51 +68,67 @@
 	<script>
 
 	$(document).ready(function(){
-
-		// LES LIENS
-
-		$(document).delegate('a', 'click', function(e){
-			e.preventDefault(); //on desactive la redirection
-			var href= $(this).attr('href'); //on recupere le lien complet du a cliqué
-			var varGet = href.split('?')[1]; // on recupere la partie après le '?', soit les variables get
-
-			$("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
-		});
-
-		// LES SUBMIT DES FORMULAIRES
-
-
-		$(document).delegate('input:submit', 'click', function(e){
-		 
-			e.preventDefault();
-
-			//on créé notre tableau automatiquement depuis le 1 form 
-			var x = $("form").serializeArray();
-
-			var tab = {};
-			$.each(x, function(i, field){
-				//$("#section-centrale").append(field.name + ":" + field.value + " ");
-				tab[field.name] = field.value;
-
-			});
-
-			//on envoie les données a notre dispatcher Ajax
-
-			var action= $('form').attr('action'); //on recupere le lien complet du a cliqué
-			var varGet = action.split('?')[1]; 
-
-
-			$.post('monAjax.php?'.concat(varGet), tab, function(e){
-				alert("ok fqkdsfjl");
-				
-				});
-				
-		$("header").load(location.href + " header");
-			
-		});
-	});
-
 	  
+	  // LES LIENS
+
+	  $(document).delegate('a', 'click', function(e){
+	  	e.preventDefault(); //on desactive la redirection
+	  	var href= $(this).attr('href'); //on recupere le lien complet du a cliqué
+	  	var varGet = href.split('?')[1]; // on recupere la partie après le '?', soit les variables get
+
+	    $("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
+	  });
+
+	// LES SUBMIT DES FORMULAIRES
+	
+	
+	$(document).delegate('input:submit', 'click', function(e){
+
+	e.preventDefault();
+	
+	alert("on rentre dans la gestion du form");
+	
+	var tab = $("#formulaire-connexion").serializeArray();
+	
+	alert(tab.toSource());//"tab : " + tab.toSource() );
+	
+	 });
+
+	    
+	   
+
+/*
+	  $(document).delegate('input:submit', 'click', function(e){
+	  	e.preventDefault();
+
+	  	alert('okkkkkkkkkkkkk');
+	  	var action= $('form').attr('action'); //on recupere le lien complet du a cliqué
+	  	var varGet = action.split('?')[1]; 
+
+	  	//on charge la page
+		$("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
+
+		$.fn.form = function() {
+		    var formData = {};
+		    this.find('[name]').each(function() {
+		        formData[this.name] = this.value;  
+		    })
+		    return formData;
+		};
+
+		// use like
+		var data = $('#formulaire-inscription').form();
+
+	    alert('bonjour : ' data);
+
+	  	$.post('monAjax.php?'.concat(varGet), { nom: 'brubru', prenom: 'chacha', identifiant: 'walwal', pass: 'azerty', file: 'NONE'},
+   		function(data) {
+     	alert(data);
+   		});
+	  });*/
+
+	});
+	
 	</script>
 	
 	<footer>

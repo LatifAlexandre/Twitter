@@ -44,7 +44,7 @@ class mainController
 	public static function inscriptionTraitement($request, $context)
 	{
 		
-		
+		var_dump($_REQUEST['nom']);die();
 		$values = array(
 							'identifiant' => $_REQUEST['identifiant'], 
 							'pass' => sha1($_REQUEST['pass']), 
