@@ -31,7 +31,9 @@ class mainController
 
 	public static function index($request,$context)
 	{
-		$context->tweets = tweetTable::getTweets();
+		$context->tweetsI = tweetTable::getTweets();
+		
+		$context->tweets = array_slice($context->tweetsI,0,10);
 		return context::SUCCESS;
 	}
 
@@ -63,7 +65,7 @@ class mainController
 		//on créé un objet de type user
 		$user = new utilisateur($values);
 		
-		$i = $user->save();
+		$user->save();
 		
 		return context::SUCCESS;
 	}
@@ -148,6 +150,7 @@ class mainController
 				)
 						);	
 		$tweet->save();
+	
 
 		//on le save sur la bdd
 		return context::SUCCESS;
@@ -257,19 +260,40 @@ class mainController
     	return context::SUCCESS;
     }
 
-        public static function tweetShare($request,$context)
+    public static function tweetShare($request,$context)
+	{
+		//on construit le tweet partagé
+		$tweet = tweetTable::getTweetById($request['tweetID']);
+		
+		//on modifie son emetteur
+		$tweet->emetteur = $_SESSION['user']->id;
+		//$tweet->date = date('Y-m-d H:i:s');
+
+		//on le save
+		$tweet->save();
+
+		return context::SUCCESS;
+	}
+    
+   public static function tweetByDate($request,$context)
     {
-    	//on construit le tweet partagé
-    	$tweet = tweetTable::getTweetById($request['tweetID']);
-    	
-    	//on modifie son emetteur
-    	$tweet->emetteur = $_SESSION['user']->id;
-
-    	//on le save
-    	$tweet->save();
-
-    	return context::SUCCESS;
+    	//var_dump($request);
+		if (!isset($request['date']))
+		{
+			$date = $request['date'];
+			//on affiche tout les tweets de la BDD
+			$context->tweets = tweetTable::getTweetsbyDate($date);
+			
+			if (count($context->tweets) == 0){
+				return context::ERROR;
+			}
+			
+			return context::SUCCESS;
+		}
+			
+		return context::ERROR;
     }
+    
 
 
 }

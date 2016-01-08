@@ -58,58 +58,71 @@
 		</div>
 	</header>
 	
-	
+	<div id='bandeau-notif'>
+	</div>
 	
 	<section id="section-centrale">
+		
+		
+		<button id="but1"> BOUTON </button>
+		<button id="but2"> BOUTON </button>
+		
+		<?php include($template_view); ?>
 	</section>
+	
+	
    	
 	<script src="jquery-1.9.1.min.js"> </script>
 
 	<script>
 
 	$(document).ready(function(){
-
-		// LES LIENS
-
-		$(document).delegate('a', 'click', function(e){
-			e.preventDefault(); //on desactive la redirection
-			var href= $(this).attr('href'); //on recupere le lien complet du a cliqué
-			var varGet = href.split('?')[1]; // on recupere la partie après le '?', soit les variables get
-
-			$("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
-		});
-
-		// LES SUBMIT DES FORMULAIRES
-
-
-		$(document).delegate('input:submit', 'click', function(e){
-		 
-			e.preventDefault();
-
-			//on créé notre tableau automatiquement depuis le 1 form 
-			var x = $("form").serializeArray();
-
-			var tab = {};
-			$.each(x, function(i, field){
-				//$("#section-centrale").append(field.name + ":" + field.value + " ");
-				tab[field.name] = field.value;
-
-			});
-
-			//on envoie les données a notre dispatcher Ajax
-
-			var action= $('form').attr('action'); //on recupere le lien complet du a cliqué
-			var varGet = action.split('?')[1]; 
-
-
-			$.post('monAjax.php?'.concat(varGet), tab, function(e){
-				alert("ok fqkdsfjl");
-				
-				});
-				
-		$("header").load(location.href + " header")
+		
+		$('#bandeau-notif').hide();
+		
+		
+		$("#but1").click(function()
+		{
 			
+			//$('#bandeau-notif').show();
+			$('#bandeau-notif').slideToggle("slow");
 		});
+		
+		$("#but2").click(function()
+		{
+				//on genere la date
+				var d = new Date();
+				
+				var y = d.getFullYear();
+
+				var mo = d.getUTCMonth()+1;
+				if (mo < 10) mo = '0'+mo;
+
+				var da = d.getUTCDate();
+				if (da < 10) da = '0'+da;
+
+				var h = d.getHours();
+				if (h < 10) h = '0'+ h;
+
+				var m = d.getMinutes();
+				if (m < 10) m = '0'+ m;
+
+				var s = d.getSeconds();
+				if (s < 10) s = '0'+ s;
+				
+     			var now = "2016-01-08 14:09:53";//y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
+     			
+     		alert('date : ' + now);
+     		var newTweets = $.get('monAjax.php', { action:'tweetByDate', date:now});
+     		
+     		alert(newTweets);
+     		
+     		//on ajoute les tweets a la section centrale
+			//$("#section-centrale").load('monAjax.php', { action:'tweetByDate', date:now});
+			$("#section-centrale").prepend($newTweets);
+		});
+		
+
 	});
 
 	  

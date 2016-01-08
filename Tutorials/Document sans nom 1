@@ -1,0 +1,55 @@
+// LES LIENS
+
+		$(document).delegate('a', 'click', function(e){
+			e.preventDefault(); //on desactive la redirection
+			var href= $(this).attr('href'); //on recupere le lien complet du a cliqué
+			var varGet = href.split('?')[1]; // on recupere la partie après le '?', soit les variables get
+
+			 	$("#section-centrale").load('monAjax.php', varGet.replace('&', ', '));
+		});
+
+		// LES SUBMIT DES FORMULAIRES
+
+
+		$(document).delegate('input:submit', 'click', function(e){
+		 
+			e.preventDefault();
+
+			//on créé notre tableau automatiquement depuis le 1 form 
+			var x = $("form").serializeArray();
+
+			var tab = {};
+			$.each(x, function(i, field){
+				//$("#section-centrale").append(field.name + ":" + field.value + " ");
+				tab[field.name] = field.value;
+
+			});
+
+			//on envoie les données a notre dispatcher Ajax
+
+			var action= $('form').attr('action'); //on recupere le lien complet du a cliqué
+			var varGet = action.split('?')[1]; 
+
+
+			$.post('monAjax.php?'.concat(varGet), tab, function(e){
+				alert("ok fqkdsfjl");
+				
+				});
+				
+		$("header").load(location.href + " header");
+			
+		});
+		
+		
+		
+		
+2016-01-08 14:11:10
+2016-01-08 13:13:58		
+		
+
+
+
+
+
+
+
