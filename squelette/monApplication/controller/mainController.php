@@ -53,19 +53,44 @@ class mainController
 							'nom' => $_REQUEST['nom'], 
 							'prenom' => $_REQUEST['prenom']);
 
-		if (isset($_REQUEST['avatar']))
+          if($_FILES['avatar']['error'] > 0)
 		{
-			$values['avatar'] = $_REQUEST['avatar'];
-		}
-		else
-		{
+		     $context->error = true;
 			$values['avatar']  = 'NONE';
 		}
 		
-		//on créé un objet de type user
+		
+		//-------------- TRAITEMENT IMAGE -------------------
+				   $nom_fichier = md5(uniqid(rand(), true)); // créer un nom aléatoire
+				   $emplacement = "/nfs/nas01a_etudiants/inf/uapv1404039/public_html/Twitter/squelette/images/".$nom_fichier; // choisir l'emplacement (on peut définir cette variable au début de notre php
+               $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'],$emplacement);
+               if ($resultat){
+                    $context->file = true;   
+                    
+                    $x = explode('/',$emplacement);
+                    $context->result = "https://pedago02a.univ-avignon.fr/~$x[4]/Twitter/squelette/images/$x[9]";
+                    
+                    @$values['avatar'] = $context->result;
+               }
+               else{
+                     $context->file = false;
+                    $values['avatar']  = 'NONE';
+               }
+               // ----------------------------------------------
+		
+		//---------------------------- on créé un objet de type user
 		$user = new utilisateur($values);
 		
 		$user->save();
+		
+		
+		// ----------------------- On ouvre la session !! -----------------------------
+          $identifiant = $_REQUEST['identifiant'];
+          $pass = $_REQUEST['pass'];
+          $user = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
+
+          //on ouvre la session
+          context::setSessionAttribute('user', 	$user);
 		
 		return context::SUCCESS;
 	}
@@ -83,10 +108,16 @@ class mainController
 	        
 	        $user = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
 	        
-	        //on ouvre la session
+	        if ($user == false){
+	          return context::ERROR;
+	           
+	         }
+	        else{
+	          //on ouvre la session
 	        context::setSessionAttribute('user', 	$user);
 	        
-	        return context::SUCCESS;    
+	        return context::SUCCESS; 
+	        }
 	}
 	
 	public static function deconnexion()
@@ -251,7 +282,6 @@ class mainController
     {
     	//on ouvre le tweet qu'on liké
     	$tweet = tweetTable::getTweetById($request['tweetID']);
-    	var_dump($tweet);
 
     	$tweet->nbvotes++;
 

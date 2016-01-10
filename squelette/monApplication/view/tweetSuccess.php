@@ -1,24 +1,31 @@
 <?php
-	/*
-	$profilePicture = $context->profilePicture;
-	$identifiant = $context->identifiant;
-	$tweet = $context->tweet;
-	$vote = $context->vote;
-	$partage = $context->partage;
-	*/
-	
+
 	foreach($context->tweets as $tweet)
 	{
+	     
 	?>
 	
 <div class="box-tweet">
 
 	<a href='monApplication.php?action=userProfile&userID=<?php echo $tweet->getParent()->id ?> '>
 		<img class="profile-picture-tweet" 
-		src=" <?php echo $tweet->getParent()->avatar; ?>"
-		alt=" <?php echo $tweet->getParent()->avatar; ?>" 
+		src="<?php
+		        
+                    $external_link = $tweet->getParent()->avatar;
+                    if (@getimagesize($external_link)) {
+                    
+		               echo $tweet->getParent()->avatar;
+		          }
+		          
+		          else{
+		               echo "images/tra.png";
+		          }
+	          ?>"
 		>
+		<!-- alt=" <?php echo $tweet->getParent()->avatar; ?>"  
 		
+		https://pbs.twimg.com/profile_images/1124118747/happy_400x400.JPG
+		-->
 		<div class="infoUser">
 			<p class="identifiant-tweet"> <?php echo $tweet->getParent()->identifiant; ?></p>
 			<p class="id-tweet"> id : <?php echo $tweet->id; ?></p>

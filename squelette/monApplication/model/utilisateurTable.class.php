@@ -16,7 +16,7 @@ class utilisateurTable
   	if (isset($res[0]))
   	        $user = new utilisateur($res[0]);
   	else
-  	        $user = new utilisateur(NULL);
+  	        return false ;
   	
   	return $user;
   }

@@ -5,6 +5,7 @@
         $identifiant = $context->user->identifiant;
         $id = $context->user->id;
         $statut = $context->user->statut;
+        
 ?>
 
 <div id="profile-bloc" class='bloc-principal'>
@@ -24,7 +25,8 @@
          <p id="statut">   
                 Lorem ipsum dolor sit amet Lorem ipsum dolor 
                 sit amet Lorem ipsum dolor sit amet 
-                <?php /*echo $statut;*/ ?> 
+                <?php /*echo $statut;*/ ?>
+                
         </p>
 
 

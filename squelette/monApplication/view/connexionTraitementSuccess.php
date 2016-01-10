@@ -1,9 +1,9 @@
 <?php
 
-//header("Location:monApplication.php?action=userProfile");
+header("Location:monApplication.php?action=userProfile");
 
 
-
+//vous vous ete connecté
 ?>
 
-vous vous ete connecté
+

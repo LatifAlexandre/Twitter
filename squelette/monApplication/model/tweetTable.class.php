@@ -11,7 +11,11 @@ class tweetTable
 		$connection = new dbconnection() ;
 	
 		
-		$sql = "select jabaianb.tweet.id, emetteur, parent, post, nbvotes from jabaianb.tweet INNER JOIN jabaianb.post ON jabaianb.tweet.post = jabaianb.post.id ORDER BY date desc" ;
+		$sql = "SELECT jabaianb.tweet.id, emetteur, parent, post, nbvotes 
+		FROM jabaianb.tweet 
+		INNER JOIN jabaianb.post 
+		ON jabaianb.tweet.post = jabaianb.post.id 
+		ORDER BY date desc" ;
                 $res = $connection->doQueryObject( $sql, 'tweet' );
 
                     if($res === false)
@@ -78,7 +82,7 @@ class tweetTable
 		$connection = new dbconnection() ;
 	
 		
-		$sql = "select * from jabaianb.tweet where id=$id" ;
+		$sql = "SELECT * FROM jabaianb.tweet WHERE id=$id" ;
                 $res = $connection->doQueryObject( $sql, 'tweet' );
 
                     if($res === false)
@@ -110,7 +114,12 @@ class tweetTable
 		$connection = new dbconnection() ;
 	
 		
-		$sql = "select jabaianb.tweet.id, emetteur, parent, post, nbvotes from jabaianb.tweet INNER JOIN jabaianb.post ON jabaianb.tweet.post = jabaianb.post.id WHERE '$date' < date ORDER BY date desc" ;
+		$sql = "SELECT jabaianb.tweet.id, emetteur, parent, post, nbvotes 
+		FROM jabaianb.tweet 
+		INNER JOIN jabaianb.post 
+		ON jabaianb.tweet.post = jabaianb.post.id 
+		WHERE '$date' < date 
+		ORDER BY date desc" ;
 		
 		
                 $res = $connection->doQueryObject( $sql, 'tweet' );

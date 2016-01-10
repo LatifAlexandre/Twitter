@@ -64,8 +64,7 @@
 	<section id="section-centrale">
 		
 		
-		<button id="but1"> BOUTON </button>
-		<button id="but2"> BOUTON </button>
+		
 		
 		<?php include($template_view); ?>
 	</section>
@@ -77,19 +76,22 @@
 	<script>
 
 	$(document).ready(function(){
+	
 		
 		$('#bandeau-notif').hide();
 		
-		
-		$("#but1").click(function()
-		{
+		//$("#but1").click(function()
+		(function tweetUpdate(){
 			
 			//$('#bandeau-notif').show();
 			$('#bandeau-notif').slideToggle("slow");
-		});
+			setTimeout(tweetUpdate,4000);
+		})();
 		
-		$("#but2").click(function()
+		//$("#but2").click(function()
+		(function dateUpdate()
 		{
+		     //alert("hh");
 				//on genere la date
 				var d = new Date();
 				
@@ -110,17 +112,19 @@
 				var s = d.getSeconds();
 				if (s < 10) s = '0'+ s;
 				
-     			var now = "2016-01-08 14:09:53";//y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
+     			var now = y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
      			
-     		alert('date : ' + now);
+     		
      		var newTweets = $.get('monAjax.php', { action:'tweetByDate', date:now});
      		
-     		alert(newTweets.toSource());
+     		//alert(newTweets);
      		
      		//on ajoute les tweets a la section centrale
 			//$("#section-centrale").load('monAjax.php', { action:'tweetByDate', date:now});
-			$("#section-centrale").prepend($newTweets);
-		});
+			$("#section-centrale").prepend(newTweets);
+			//alert('date : ' + now);
+			setTimeout(dateUpdate,10000);
+		})();
 		
 
 	});

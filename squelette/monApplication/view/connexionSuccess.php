@@ -4,9 +4,9 @@
 	
 	<form id="formulaire-connexion" method="post" action="monApplication.php?action=connexionTraitement" enctype="multipart/form-data">
 	
-		<label for="identifiant">Login</label> <input type="text" name="identifiant" id="identifiant" /> <br>
+		<label for="identifiant">Login</label> <input type="text" name="identifiant" id="identifiant" required/> <br>
 	
-		<label for="pass">Password</label> <input type="password" name="pass" id="pass" /> <br>
+		<label for="pass">Password</label> <input type="password" name="pass" id="pass" required/> <br>
 		
 		<input type="submit" value="Log in" />
 	
