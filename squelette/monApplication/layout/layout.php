@@ -59,11 +59,14 @@
 	</header>
 	
 	<div id='bandeau-notif'>
+		Nouveaux Tweets !
 	</div>
 	
 	<section id="section-centrale">
 		
-		
+		<!-- <button id="but"> WESH </button> -->
+
+		<div id='demo'> </div>
 		
 		
 		<?php include($template_view); ?>
@@ -71,62 +74,76 @@
 	
 	
    	
+   	
 	<script src="jquery-1.9.1.min.js"> </script>
 
 	<script>
 
 	$(document).ready(function(){
-	
 		
+
+		var tempsUpdate = 4000; // le temps entre 2 refresh en ms
+
 		$('#bandeau-notif').hide();
-		
-		//$("#but1").click(function()
-		(function tweetUpdate(){
-			
-			//$('#bandeau-notif').show();
+
+		setTimeout(tweetUpdate,tempsUpdate);
+
+		/*
+		$("#but").click(function(){
 			$('#bandeau-notif').slideToggle("slow");
-			setTimeout(tweetUpdate,4000);
-		})();
+			//setTimeout(tweetUpdate,4000);
+			tweetUpdate();
+		});*/
 		
-		//$("#but2").click(function()
-		(function dateUpdate()
+		function tweetUpdate()
 		{
-		     //alert("hh");
-				//on genere la date
-				var d = new Date();
-				
-				var y = d.getFullYear();
+			
+			setTimeout(tweetUpdate,tempsUpdate);
 
-				var mo = d.getUTCMonth()+1;
-				if (mo < 10) mo = '0'+mo;
+			
+			//on créé une chaine contenant la date actuelle
+			var d = new Date();
+			var y = d.getFullYear();
+			var mo = d.getUTCMonth()+1;
+			if (mo < 10) mo = '0'+mo;
+			var da = d.getUTCDate();
+			if (da < 10) da = '0'+da;
+			var h = d.getHours();
+			if (h < 10) h = '0'+ h;
+			var m = d.getMinutes();
+			if (m < 10) m = '0'+ m;
+			var s = d.getSeconds();
+			if (s < 10) s = '0'+ s;
+			//var now = '2016-01-15 12:38:22' ;
+ 			var now = y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
 
-				var da = d.getUTCDate();
-				if (da < 10) da = '0'+da;
+			//on appelle la foncton tweetByDate, et on recupere sa view
+			$.ajax({
+		       url : 'monAjax.php?',
+		       type : 'GET',
+		       data : 'action=tweetByDate' + '&date=' + now,
+		       dataType : 'html', // On désire recevoir du HTML
+		       success : function(code_html, statut){ 
+		        // code_html contient le HTML renvoyé
 
-				var h = d.getHours();
-				if (h < 10) h = '0'+ h;
+		        //si on detecte la view error, il n'y a pas de nouveaux tweets
+		        if (code_html != 'ERROR\n')
+		        {
+		        	alert("nouveau tweet");
+		        	$('#bandeau-notif').slideToggle("slow");
+					setTimeout(closeBandeauNotif, 2000);
 
-				var m = d.getMinutes();
-				if (m < 10) m = '0'+ m;
+		        	$( "#section-centrale" ).prepend( code_html );
+		        }
 
-				var s = d.getSeconds();
-				if (s < 10) s = '0'+ s;
-				
-     			var now = y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
-     			
-     		
-     		var newTweets = $.get('monAjax.php', { action:'tweetByDate', date:now});
-     		
-     		//alert(newTweets);
-     		
-     		//on ajoute les tweets a la section centrale
-			//$("#section-centrale").load('monAjax.php', { action:'tweetByDate', date:now});
-			$("#section-centrale").prepend(newTweets);
-			//alert('date : ' + now);
-			setTimeout(dateUpdate,10000);
-		})();
-		
+		       }
+		    });
+		};
 
+		function closeBandeauNotif()
+		{
+			$('#bandeau-notif').slideToggle("slow");
+		}
 	});
 
 	  
