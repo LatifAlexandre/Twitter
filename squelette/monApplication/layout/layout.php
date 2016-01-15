@@ -59,7 +59,7 @@
 	</header>
 	
 	<div id='bandeau-notif'>
-		Nouveaux Tweets !
+		<p> Nouveaux Tweet(s) ! </p>
 	</div>
 	
 	<section id="section-centrale">
@@ -72,82 +72,6 @@
 		<?php include($template_view); ?>
 	</section>
 	
-	
-   	
-   	
-	<script src="jquery-1.9.1.min.js"> </script>
-
-	<script>
-
-	$(document).ready(function(){
-		
-
-		var tempsUpdate = 4000; // le temps entre 2 refresh en ms
-
-		$('#bandeau-notif').hide();
-
-		setTimeout(tweetUpdate,tempsUpdate);
-
-		/*
-		$("#but").click(function(){
-			$('#bandeau-notif').slideToggle("slow");
-			//setTimeout(tweetUpdate,4000);
-			tweetUpdate();
-		});*/
-		
-		function tweetUpdate()
-		{
-			
-			setTimeout(tweetUpdate,tempsUpdate);
-
-			
-			//on créé une chaine contenant la date actuelle
-			var d = new Date();
-			var y = d.getFullYear();
-			var mo = d.getUTCMonth()+1;
-			if (mo < 10) mo = '0'+mo;
-			var da = d.getUTCDate();
-			if (da < 10) da = '0'+da;
-			var h = d.getHours();
-			if (h < 10) h = '0'+ h;
-			var m = d.getMinutes();
-			if (m < 10) m = '0'+ m;
-			var s = d.getSeconds();
-			if (s < 10) s = '0'+ s;
-			//var now = '2016-01-15 12:38:22' ;
- 			var now = y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
-
-			//on appelle la foncton tweetByDate, et on recupere sa view
-			$.ajax({
-		       url : 'monAjax.php?',
-		       type : 'GET',
-		       data : 'action=tweetByDate' + '&date=' + now,
-		       dataType : 'html', // On désire recevoir du HTML
-		       success : function(code_html, statut){ 
-		        // code_html contient le HTML renvoyé
-
-		        //si on detecte la view error, il n'y a pas de nouveaux tweets
-		        if (code_html != 'ERROR\n')
-		        {
-		        	alert("nouveau tweet");
-		        	$('#bandeau-notif').slideToggle("slow");
-					setTimeout(closeBandeauNotif, 2000);
-
-		        	$( "#section-centrale" ).prepend( code_html );
-		        }
-
-		       }
-		    });
-		};
-
-		function closeBandeauNotif()
-		{
-			$('#bandeau-notif').slideToggle("slow");
-		}
-	});
-
-	  
-	</script>
 	
 	<footer>
 		<p> Charlie Brugvin & Alexandre Latif - Web Project S5 CERI 2015 </p>

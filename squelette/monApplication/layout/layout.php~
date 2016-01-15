@@ -59,74 +59,19 @@
 	</header>
 	
 	<div id='bandeau-notif'>
+		<p> Nouveaux Tweet(s) ! </p>
 	</div>
 	
 	<section id="section-centrale">
 		
+		<!-- <button id="but"> WESH </button> -->
+
+		<div id='demo'> </div>
 		
-		<button id="but1"> BOUTON </button>
-		<button id="but2"> BOUTON </button>
 		
 		<?php include($template_view); ?>
 	</section>
 	
-	
-   	
-	<script src="jquery-1.9.1.min.js"> </script>
-
-	<script>
-
-	$(document).ready(function(){
-		
-		$('#bandeau-notif').hide();
-		
-		
-		$("#but1").click(function()
-		{
-			
-			//$('#bandeau-notif').show();
-			$('#bandeau-notif').slideToggle("slow");
-		});
-		
-		$("#but2").click(function()
-		{
-				//on genere la date
-				var d = new Date();
-				
-				var y = d.getFullYear();
-
-				var mo = d.getUTCMonth()+1;
-				if (mo < 10) mo = '0'+mo;
-
-				var da = d.getUTCDate();
-				if (da < 10) da = '0'+da;
-
-				var h = d.getHours();
-				if (h < 10) h = '0'+ h;
-
-				var m = d.getMinutes();
-				if (m < 10) m = '0'+ m;
-
-				var s = d.getSeconds();
-				if (s < 10) s = '0'+ s;
-				
-     			var now = "2016-01-08 14:09:53";//y +"-" + mo + "-" + da + " " +  h + ":" + m + ":" + s;
-     			
-     		alert('date : ' + now);
-     		var newTweets = $.get('monAjax.php', { action:'tweetByDate', date:now});
-     		
-     		alert(newTweets);
-     		
-     		//on ajoute les tweets a la section centrale
-			//$("#section-centrale").load('monAjax.php', { action:'tweetByDate', date:now});
-			$("#section-centrale").prepend($newTweets);
-		});
-		
-
-	});
-
-	  
-	</script>
 	
 	<footer>
 		<p> Charlie Brugvin & Alexandre Latif - Web Project S5 CERI 2015 </p>

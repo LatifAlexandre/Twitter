@@ -57,7 +57,7 @@
 		        	$('#bandeau-notif').css("visibility","visible");
 		        	$('#bandeau-notif').slideToggle("slow");
 		        	$
-					setTimeout(closeBandeauNotif, 3000);
+					setTimeout(closeBandeauNotif, 2000);
 
 		        	$( "#section-centrale" ).prepend( code_html );
 		        }
@@ -71,7 +71,7 @@
 			$('#bandeau-notif').slideToggle("slow");
 		}
 		
-		setInterval(tweetUpdate,3000);
+		setInterval(tweetUpdate,2000);
 	});
 
 	  

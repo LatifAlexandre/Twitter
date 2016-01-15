@@ -5,57 +5,137 @@ body
 	background-color: silver;
 	font-family: Arial;
 	/*arriere plan */
-	background:
-	linear-gradient(135deg, #FFDBBC 22px, #FFC592 22px, #FFC592 24px, transparent 24px, transparent 67px, #FFC592 67px, #FFC592 69px, transparent 69px),
-	linear-gradient(225deg, #FFDBBC 22px, #FFC592 22px, #FFC592 24px, transparent 24px, transparent 67px, #FFC592 67px, #FFC592 69px, transparent 69px)0 64px;
-	background-color: #FFDBBC;
-	background-size: 64px 128px
+	background: url("paper.png") scroll;
 }
 
 /*---------- EN TETE ----------*/
 header
 {
-	background-color: #4CB453;
-	box-shadow: 0px 5px 5px gray;
-	height: 50px;
-	margin-top: 0px;
+	background-color: rgba(129,206,53,0.5);
+	box-shadow: 0px 5px 5px silver;
+	height: 80px;
+	width: 100%;
+	position: fixed;
+	top :0px;
 }
 
 header #en-tete-centre
 {
 	width: 1000px;
-	height: 45px;
-	margin: auto;
-	border: 1px solid #4CB453;
+	height: 80px;
+	position: fixed;
+	left: 50%;
+	right: 50%;
+	margin-left: -500px;
+	margin-right: -500px;
+	
 }
 
-header #logo
+header #logo, header img
 {
-	font-size: 30px;
-	letter-spacing: 3px;
-	font-weight: bold;
-	color: #F7FDBA;
-	width: 150px;
-	margin: 5px
+	margin-top: 13px;
+	width: 170px;
+	height: 50px;
+	position: fixed;
 }
 
+header a
+{
+	color: #2f3279;
+	text-decoration: none;
+	font-weight: bold;
+	
+}
+header a:hover
+{
+	color: white;
+	text-decoration: none;
+	
+
+}
+
+header #liste-liens
+{
+	position: fixed;
+	left: 50%;
+	top: 35px;
+	margin-left: -320px;
+	padding: 0px;
+	
+}
+
+header #liste-liens li
+{
+	
+		display: inline-block;
+	margin: 0px 20px;
+}
+
+header p
+{
+	position: fixed;
+	right: 50%;
+	margin-right: -500px;
+	top: 5px;
+	color: #3f44af;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+header #liste-profile 
+{
+	position: fixed;
+	right: 50%;
+	margin-right: -500px;
+	top: 35px;
+	padding: 0px;
+}
+
+header #liste-profile li
+{
+		display: inline-block;
+	margin: 0px 5px;
+}
+
+
+/*
 header #menu
 {
-     width:500px;
-     word-spacing: 25px;
-     font-weight:bold;
+	display: inline-block;
+	margin-left: 20px;
 }
+
+header #menu a
+{
+	color: rgb(247, 253, 186);
+	text-decoration: none;
+	margin: 0px 10px;
+}
+
+header #menu a:hover
+{
+	color: white;	
+	text-decoration: none;
+	text-shadow: 0px 0px 7px silver;
+
+}
+
+header #menu span
+{
+	color: black;
+	text-shadow: 0px 0px 5px white;
+}
+*/
 
 /* ---------- FIN EN TETE ---------- */
 
 /* ---------- PIED DE PAGE ---------- */
 footer
 {
-	background-color: #4CB453;
+	background-color: rgba(129,206,53,0.5);
+	box-shadow: 0px 5px 5px silver;
 	height: 40px;
-	box-shadow: 5px 0px 5px gray;
-	color: #F7FDBA;
-	font-weight: bold;
+	width: 100%;
 }
 
 footer p
@@ -67,25 +147,53 @@ footer p
 /* ---------- FIN PIED DE PAGE ---------- */
 
 /* ---------- SECTION CENTRALE ---------- */
+
+#bandeau-notif
+{
+     visibility:hidden;
+     text-align: center;
+	width : 320px;
+	height: 50px;
+	background-color: #3F44AF;
+	opacity: 0.8;
+	box-shadow: 0px 0px 5px grey;
+	border-radius: 0px 0px 5px 5px;
+	
+	color: white;
+	
+	position: fixed;
+	top: 80px;
+	right: 50%;
+	margin-right: -500px;
+	
+}
+
+#bandeau-notif p
+{ 
+     width: 170px;
+     margin: 15px auto;
+     font-weight: bold;
+     letter-spacing: 1px;
+}
+
+
 #section-centrale
 {
-	margin: 20px auto;
+	margin: 80px auto;
 	padding: 25px;
 	width: 1000px;
-	box-shadow: 0px 0px 5px black;
 	border-radius: 5px;
 	text-align: center;
-	background-color: #F2FDF3;
 	overflow: auto;
 }
-#section-centrale h1
-{
-	color: #4CB453;
-	width: 600px;
-	margin: auto;
-	border-bottom: 2px solid #A8E4AC;
 
-	letter-spacing: 2px;
+#section-centrale .bloc-principal
+{
+	box-shadow: 0px 0px 5px silver;
+	background-color: rgba(255,255,255,0.2);
+	padding: 10px;
+  border-radius: 5px;
+	margin: 20px 0px;
 }
 
 #message-erreur
@@ -94,13 +202,43 @@ footer p
 	font-weight: bold;
 }
 
+				/* --------- FORM CONNEXION -------*/
+#formulaire-connexion label, #formulaire-connexion input,
+#formulaire-inscription label, #formulaire-inscription input
+{
+
+	margin: 20px 0px;
+}
+
+#formulaire-connexion-tab
+{
+        border-collapse:collapse;
+        text-align:center;
+}
+
+#formulaire-connexion-tab td
+{
+        border:none;
+        outline:none;
+}
+
+#formulaire-inscription label
+{
+	width: 120px;
+	display: inline-block;
+}
+
+/* ---------- FORMULAIRE INSCRIPTION ----------*/
+
+/* ---------- FIN  FORMULAIRE INSCRIPTION ----------*/
+
          /* --------- TABLEAU BDD ----------- */
 
 table
 {
 	border-collapse: collapse;
 	margin: auto;
-	width: 800px;
+	width: 100%;
 }
 td
 {
@@ -134,41 +272,47 @@ th
 
 /*	           ----------PROFILE-------- */
 
-#profile-bloc
-{
-	border: 1px solid #000;
-     border-radius: 10px;
-     padding: 20px;
-     display: inline-block;
-     float: left;
-     width: 700px;
-}
 
 #profile-bloc #profile-picture
 {
-		     border: 1px solid #F00;
-     width: 150px;
-     height: 150px;
-     border-radius: 15px;
-     box-shadow: 0px 0px 5px black;
-	
+	display: block;
+	margin: 10px auto;
+	border: 1px solid black;
+	width: 150px;
+	height: 150px;
 }
-#profile-bloc #compte-info
+
+#profile-bloc #bloc-info-user
+{
+	width: 150px;
+	margin: auto;
+	text-align: left;
+}
+
+#profile-bloc #bloc-info-user .info-user
 {
 	font-weight: bold;
-	font-style: italic;
 }
-#profile-bloc #tweet
-{
-	width: 300px;
-     height: 75px;
-     color: #99ccff;
-}
+
 
 #profile-bloc #statut
 {
-
+	border-top : 1px solid black;
+	border-bottom : 1px solid black;
+	width: 50%;
+	margin: 40px auto;
+	padding: 20px;
+	
 }
+
+#bloc-redaction-tweet textarea
+{
+	width: 80%;
+	height: 100px;
+	
+}
+
+
 
 
 
@@ -185,23 +329,84 @@ th
 }
 /*                 -------- FIN PROFILE ------ */
 	
+
+/* 		             ---------- TWEET -----------*/
+
+.box-tweet
+{
+	box-shadow: 0px 0px 5px silver;
+	background-color: rgba(255,255,255,0.2);
+	text-align: left;
+	padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  width: 80%;
+	margin-top:20px;
 }
 
+.profile-picture-tweet
+{
+	width: 70px;
+	height: 70px;
+	display: inline-block;
+	
+	box-shadow: 0px 0px 5px grey;
+	border-radius: 7px;
+}
+
+
+
+.infoUser
+{
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.identifiant-tweet
+{
+	font-size: 20px;
+	margin: 0px 10px;
+}
+
+.id-tweet
+{
+	margin: 0px 10px;
+	font-size: 15px;
+	color: green;
+}
+
+.message-tweet
+{
+	bdorder: 1px solid black;
+	margin: 25px 40px;
+}
+
+.tweet-actions
+{
+	width: 500px;
+	margin: auto;
+	padding: 15px;
+	text-align: center;
+	border-top: 1px solid green;
+	
+}
+.tweet-actions a
+{
+	background-color: rgba(129,206,53,0.3);
+	margin: 15px 15px;
+	padding: 5px;
+	border-radius: 3px;
+	
+	text-decoration: none;
+	font-weight: bold;
+	color: white;
+}
+.tweet-actions a:hover
+{
+	background-color: rgba(129,206,53,1);
+
+}
 
 /* ---------- FIN SECTION CENTRALE ---------- */
 
-/* ---------- FORMULAIRE INSCRIPTION ----------*/
 
-#formulaire-inscription
-{
-	border: 2px solid #A8E4AC;
-	border-radius: 15px;
-	width: 350px;
-	margin: 50px auto;
-	padding: 10px;
-	text-align: center;
-	line-height: 60px;
-	
-}
-
-/* ---------- FIN  FORMULAIRE INSCRIPTION ----------*/

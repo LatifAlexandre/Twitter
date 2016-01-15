@@ -150,6 +150,8 @@ footer p
 
 #bandeau-notif
 {
+     visibility:hidden;
+     text-align: center;
 	width : 300px;
 	height: 50px;
 	background-color: #3F44AF;
@@ -165,6 +167,15 @@ footer p
 	margin-right: -500px;
 	
 }
+
+#bandeau-notif p
+{ 
+     width: 190px;
+     margin: 15px auto;
+     font-weight: bold;
+     letter-spacing: 1px;
+}
+
 
 #section-centrale
 {
